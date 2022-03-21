@@ -1,13 +1,6 @@
 <?php
 
-use App\Http\Controllers\AttendanceController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\LeaveController;
-use App\Http\Controllers\LoanController;
-use App\Http\Controllers\FirController;
-use App\Http\Controllers\InfoController;
-use App\Http\Controllers\BillController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,18 +14,11 @@ use App\Http\Controllers\BillController;
 */
 
 Route::get('/', function () {
-    return view('employee.auth.login');
+    return view('welcome');
 });
 
-Route::name('employee.')->group(function () {
-    Route::get('/dashboard',[DashboardController::class,'index'])->name('dashboard.index');
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth'])->name('dashboard');
 
-    Route::resource('attendance', AttendanceController::class);
-    Route::resource('leave', LeaveController::class);
-    Route::resource('loan', LoanController::class);
-    Route::resource('fir', FirController::class);
-    Route::resource('info', InfoController::class);
-    Route::resource('bill', BillController::class);
-});
-
-
+require __DIR__.'/auth.php';
