@@ -1,0 +1,463 @@
+/*
+  Theme Name: Name - Admin Template
+  Author: Sazzad
+  Support: Netcoden
+  Web: https://netcoden.com/
+  Description: Creative  HTML5 Admin template By Sazzad
+  Version: 1.0
+*/
+
+/*=== table of content ===*/
+
+/*
+*** Theme Default
+*** Global 
+*** Image Card
+*** Admin User Links
+*** Input, Select & Textarea CSS
+*** User Notifications Dropdown
+*** Top User Info CSS
+*** Login Page CSS
+*/
+
+/*=== table of content ===*/
+
+/*=== Theme Default ===*/
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap');
+* {
+    margin: 0;
+    padding: 0;
+}
+body {
+    background-color: #dfdee4;
+    font-family: 'Lato', sans-serif;
+}
+
+/*=== Global ===*/
+.defaultBtn {
+    background: #1da1f2;
+    color: #fff;
+    line-height: 20px;
+    padding: 5px 7px;
+    text-transform: uppercase;
+    box-shadow: 0px 5px 10px rgba(0,0,0,0.1);
+    letter-spacing: 1px;
+    transition: 0.3s;
+    font-size: 0.7rem;
+    font-weight: 500;
+}
+.defaultBtn:hover {
+    background: #fff;
+    color: #383f50;
+    font-weight: 500;
+}
+.hvr-icon-float-away {
+    vertical-align: middle;
+    -webkit-transform: perspective(1px) translateZ(0);
+    transform: perspective(1px) translateZ(0);
+    box-shadow: 0 5px 10px rgb(0 0 0 / 10%);
+    display: inline-block;
+    text-decoration: none;
+    color: #333;
+    background: #ffffff;
+    padding: 5px 7px;
+    border-radius: 2px;
+    font-weight: 500;
+    transition: 0.3s;
+    text-transform: uppercase;
+    font-size: 0.6rem;
+}
+.hvr-icon-float-away .hvr-icon {
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+    -webkit-animation-duration: 0.5s;
+    animation-duration: 0.5s;
+    -webkit-animation-fill-mode: forwards;
+    animation-fill-mode: forwards;
+    margin-right: 2px;
+}
+.hvr-icon-float-away:hover .hvr-icon, .hvr-icon-float-away:focus .hvr-icon, .hvr-icon-float-away:active .hvr-icon {
+    -webkit-animation-name: hvr-icon-float-away;
+    animation-name: hvr-icon-float-away;
+    -webkit-animation-timing-function: ease-out;
+    animation-timing-function: ease-out;
+}
+@-webkit-keyframes hvr-icon-float-away {
+    0% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+      -webkit-transform: translateY(-1em);
+      transform: translateY(-1em);
+    }
+}
+@keyframes hvr-icon-float-away {
+    0% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+      -webkit-transform: translateY(-1em);
+      transform: translateY(-1em);
+    }
+}
+
+
+/*=== Image Card ===*/
+.image-card {
+    background: #fff;
+    padding: 1rem;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    text-align: center;
+    transition: 0.5s;
+}
+.image-card:hover{
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+.image-card .user-name {
+    font-weight: 400;
+    font-size: 1rem;
+    text-transform: uppercase;
+}
+.image-card .user-designation {
+    font-weight: 300;
+    font-size: 0.8rem;
+    text-transform: capitalize;
+}
+.image-card .user-number {
+    font-weight: 300;
+    font-size: 0.8rem;
+}
+.image-card ul {
+    margin: 0;
+    padding: 0;
+}
+.image-card ul li {
+    list-style-type: none;
+    display: inline-block;
+    padding-right: 0.5rem;
+}
+.image-card ul li a {
+    color: inherit;
+    transition: 0.5s;
+}
+.image-card ul li a:hover {
+    margin-right: 3px;
+}
+.image-card ul li a i.fa-facebook-f {
+    color: #1877F2;
+}
+.image-card ul li a i.fa-linkedin {
+    color: #0A66C2;
+}
+.image-card ul li a i.fa-twitter {
+    color: #1DA1F2;
+}
+
+/*=== Admin User Links ===*/
+.user-links {
+    border-radius: 10px;
+    transition: 0.5s;
+}
+.user-links:hover {
+     box-shadow: 0 5px 15px rgba(0,0,0,0.1); 
+}
+.user-links .list-group-item {
+    border-left: 0;
+    border-right: 0;
+    font-weight: 300;
+    font-size: 0.9rem;
+    padding: 0.7rem;
+}
+.user-links .list-group-item.active {
+    z-index: 2;
+    color: #fff;
+    background-color: #1da1f2;
+    border-color: #1da1f2;
+}
+.user-links .list-group-item:last-child {
+    border-bottom: 0;
+}
+.user-links .list-group-item i {
+    margin-right: 7px;
+}
+
+/*=== Input, Select & Textarea CSS ===*/
+.search-bar {
+    position: relative;
+}
+.search-bar input,
+.search-bar select {
+    width: 100%;
+    border: 0;
+    border-radius: 60px;
+    height: 40px;
+    padding: 0 1rem;
+    font-size: 0.8rem;
+    color: #9f9b9b;
+}
+.search-bar select {
+    appearance: none;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    padding-right: 15px;
+}
+.search-bar .selectgroup {
+    position: relative;
+}
+.search-bar .selectgroup::after {
+    font-family: "Font Awesome 5 Free";
+    font-weight: 600;
+    content: "\f078";
+    position: absolute;
+    top: 12px;
+    right: 15px;
+    font-size: 12px;
+    color: #9f9b9b;
+}
+.search-bar input:focus-visible,
+.search-bar select:focus-visible {
+    outline: 0;
+}
+.search-bar i {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    color: #dcdde0;
+    opacity: 0.5;
+}
+.search-bar i.fa-cloud-upload-alt {
+    left: 15px;
+    top: inherit;
+    bottom: 15px;
+}
+.search-bar ::placeholder {
+    color: #dcdde0;
+    opacity: 1;
+}
+  
+.search-bar :-ms-input-placeholder {
+   color: #dcdde0;
+}
+  
+.search-bar ::-ms-input-placeholder {
+   color: #dcdde0;
+}
+.search-bar input[type="file"]::-webkit-file-upload-button {
+    background: #fff;
+    border: 2px solid #fff;
+    border-radius: 4px;
+    color: #ddd;
+    cursor: pointer;
+    font-size: 12px;
+    outline: none;
+    padding: 10px 25px;
+    text-transform: uppercase;
+    transition: all 1s ease;
+    border-radius: 6px;
+}
+.search-bar input[type="file"]::-webkit-file-upload-button:hover {
+    background: #fff;
+    border: 2px solid #fff;
+    color: #000;
+}
+.search-bar.filetype input{
+      height: 100%;
+      padding-left: 0;
+}
+.textareafield textarea{
+    border: 0;
+    font-size: 0.8rem;
+    color: #9f9b9b;
+    width: 100%;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+}
+.textareafield textarea:focus {
+    outline: 0;
+    color: #9f9b9b;
+}
+.textareafield textarea::-webkit-input-placeholder{
+    opacity: 0.5;
+}
+.user-details label {
+    font-size: 0.9rem;
+    font-weight: 300;
+    color: #a4a4a5;
+}
+
+/*=== User Notifications Dropdown ===*/
+.user-notifications {
+    display: flex;
+    justify-content: space-evenly;
+}
+.user-notifications .notifications-dropdown .dropdown {
+    position: relative;
+}
+.user-notifications .notifications-dropdown .dropdown .dropdown-menu {
+    border: 0;
+    padding: 0;
+    border-color: transparent;
+    width: 15rem;
+    box-shadow: 0px 5px 10px rgba(0,0,0,0.1);
+}
+.user-notifications .notifications-dropdown .dropdown .dropdown-menu span.dropdown-header {
+  padding: 1rem;
+  background: white;
+  padding-bottom: 1rem !important;
+}
+.user-notifications .notifications-dropdown .dropdown .dropdown-menu .dropdown-divider {
+    margin: 0;
+}
+.user-notifications .notifications-dropdown .dropdown .dropdown-menu a {
+  transition: 0.3s;
+  font-weight: 300;
+  font-size: 0.9rem;
+  padding: 1rem;
+  color: #9f9b9b;
+}
+.user-notifications .notifications-dropdown .dropdown .dropdown-menu a:hover {
+  background-color: #1da1f2;
+  color: #fff;
+}
+.user-notifications .notifications-dropdown .dropdown .dropdown-menu a.dropdown-footer {
+  padding: 1rem !important;
+}
+.user-notifications .notifications-dropdown .dropdown .dropdown-menu a span {
+    color: #9f9b9b !important;
+    transition: 0.3s;
+}
+.user-notifications .notifications-dropdown .dropdown .dropdown-menu a:hover span {
+  color: #fff !important;
+}
+.user-notifications .notifications-dropdown .dropdown .badge {
+  position: absolute;
+  color: #fcc390;
+  top: -2px;
+  font-size: 0.50rem;
+  left: 2px;
+}
+.user-notifications .notifications-dropdown .dropdown .dropdown-toggle{
+    color: #c6c7cd;
+    cursor: pointer;
+}
+.user-notifications .notifications-dropdown .dropdown .dropdown-toggle:after{
+  display: none;
+}
+
+/*=== Top User Info CSS ===*/
+.top-user-info {
+    padding-bottom: 2rem;
+}
+.top-user-info .welcome-message {
+    display: flex;
+    flex-direction: column;
+}
+.top-user-info .welcome-message .grettings {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #383f50;
+}
+.top-user-info .welcome-message .name {
+    font-weight: 300;
+    font-size: 1rem;
+    text-transform: capitalize;
+}
+
+/*=== Login Page CSS ===*/
+  
+.login {
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.login-details {
+  background: #f8f7fc;
+  padding: 2.5rem;
+  border-radius: 10px;
+  box-shadow: 0px 5px 10px rgba(0,0,0,0.1);
+}
+.login-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #383f50;
+  margin-bottom: 20px;
+  text-align: center;
+}
+.label-title {
+  padding-left: 10px;
+  padding-bottom: 10px;
+  color: #383f50;
+  font-size: 1rem;
+}
+.login-btn {
+  display: block;
+  width: 100%;
+  min-height: 40px;
+  padding: 0 1rem;
+  font-size: 1rem;
+  border: 0;
+  border-radius: 60px;
+  background-color: #1da1f2;
+  color: #fff;
+  text-transform: uppercase;
+}
+.form-title {
+  font-size: 1rem;
+  color: #bfbfbf;
+  margin-bottom: 15px;
+}
+
+
+
+.bg-cover {
+    background: url('https://fxmetatech.com/wp-content/uploads/2020/07/banner.jpg');
+    min-height: 200px;
+    background-repeat: no-repeat;
+    background-position: top left;
+    background-size: cover;
+}
+.user-info {
+    background: #f8f7fc;
+    padding: 1rem;
+    margin-top: -8rem;
+    border-radius: 10px;
+}
+.user-details {
+    background: #f8f7fc;
+    padding: 1rem;
+    margin-top: 1rem;
+    border-radius: 10px;
+}
+.user-bar-icon {
+    display: none;
+}
+.main .title {
+      font-size: 1.1rem;
+      padding-bottom: 20px;
+}
+.flexitembox {
+    justify-content: space-between;
+    display: flex;
+    padding: 0.5rem 0.8rem;
+}
+.flexitembox a:hover {
+    text-decoration: none;
+    color: #383f50;
+    background: #fff;
+} 
+.employee-view  ul {
+    margin: 0;
+    padding: 0;
+}
+.employee-view  ul li {
+    display: inline-block;
+    list-style: none;
+    padding-right: 5px;
+    color: #bfbfbf;
+    font-weight: 100;
+}

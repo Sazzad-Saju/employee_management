@@ -1,0 +1,99 @@
+
+
+@media (max-width: 1399.98px) { 
+    .user-details {
+        min-height: calc(100vh - 424px);
+    }
+}
+
+@media (max-width: 1199.98px) {  }
+
+@media (max-width: 991.98px) { 
+    .image-card ul li a {
+        font-size: 14px;
+    }
+    .employee-view  ul li {
+        display: block;
+    }
+ }
+
+@media (max-width: 767.98px) { 
+    .user-bar-icon {
+        display: block;
+    }
+    .user-bar-icon i {
+        color: #c6c7cd;
+        cursor: pointer;
+    }
+    #toggle {
+        position: fixed;
+        top: 15px;
+        right: 15px;
+        width: 50px;
+        height: 50px;
+        background-color: #fff;
+        cursor: pointer;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 1;
+        box-shadow: 0 5px 15px rgb(0 0 0 / 10%);
+      }
+      #toggle::before{
+        content: '';
+        position: absolute;
+        width: 25px;
+        height: 2px;
+        background-color: #000;
+        transform: translateY(-5px);
+        transition: 0.3s;
+      }
+      #toggle::after{
+        content: '';
+        position: absolute;
+        width: 25px;
+        height: 2px;
+        background-color: #000;
+        transform: translateY(5px);
+        transition: 0.3s;
+      }
+      #toggle.active::before {
+        transform: translateY(0px) rotate(45deg);
+      }
+      #toggle.active::after {
+        transform: translateY(0px) rotate(-45deg);
+      }
+      #sidebar {
+        position: fixed;
+        top: 0;
+        left: -300px;
+        width: 300px;
+        transition: 0.5s;
+        z-index: 1;
+        box-shadow: 0 5px 10px rgb(0 0 0 / 20%);
+        margin-top: 0;
+        border-radius: 0;
+        overflow-y: scroll;
+        height: 100%;
+    }
+    #sidebar.active {
+        left: 0px;
+    }
+    .user-details {
+        height: 100%;
+        border-radius: 4px;
+    }
+ }
+
+@media (max-width: 575.98px) { 
+    .welcome-message {
+        margin-bottom: 20px;
+    }
+    #sidebar {
+        left: -250px;
+        width: 250px;
+    }
+    .employee-view ul li {
+        display: block;
+    }
+ }
