@@ -7,6 +7,7 @@ use App\Http\Requests\Auth\LoginRequest;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Brian2694\Toastr\Facades\Toastr;
 
 class AuthenticatedSessionController extends Controller
 {
@@ -17,7 +18,7 @@ class AuthenticatedSessionController extends Controller
      */
     public function create()
     {
-        return view('auth.login');
+        return view('employee.auth.login');
     }
 
     /**
@@ -28,11 +29,14 @@ class AuthenticatedSessionController extends Controller
      */
     public function store(LoginRequest $request)
     {
+        // dd('asdfg');
+        // return $request->all();
         $request->authenticate();
 
         $request->session()->regenerate();
-
-        return redirect()->intended(RouteServiceProvider::HOME);
+        Toastr::success('Welcome '.auth()->user()->name, "Log in");
+        // return redirect()->intended(RouteServiceProvider::HOME);
+        return redirect()->route('employee.dashboard.index');
     }
 
     /**
@@ -49,6 +53,7 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerateToken();
 
+        Toastr::warning("You have log out", "Log out");
         return redirect('/');
     }
 }

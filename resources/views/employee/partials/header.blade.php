@@ -3,7 +3,7 @@
         <div class="col-12 col-sm-4 col-md-5 col-lg-4 col-xl-4">
             <div class="welcome-message">
                 <span class="grettings">Good Morning</span>
-                <span class="name">john</span>
+                <span class="name">{{auth()->user()->name}}</span>
             </div>
         </div>
         <div class="col-10 col-sm-6 col-md-6 col-lg-7 col-xl-7">

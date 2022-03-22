@@ -30,7 +30,8 @@ class UserFactory extends Factory
             'phone'=> $this->faker->unique()->phoneNumber,
             // 'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
             // 'password'=>bcrypt('123qwe'),
-            'password' => '$2y$10$r72GVzfUZBKY17vGnoSjCOo..fwU1PGMSwl91oi4TbKNE8PCfNRma',
+            'password' => '$2y$10$st4/twU5xm1t42UEcYhuKeKzlw66lH5Noduu7P.JxFzPUqbRBaoWW',
+            // 'password' => bcrypt('123qwe'),
             'remember_token' => Str::random(10),
         ];
     }

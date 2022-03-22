@@ -43,6 +43,7 @@
   <div class="loader-wrapper" id="loader-wrapperX">
     <span class="loader"><span class="loader-inner"></span></span>
   </div>
+
   </body>
   <script>
     // $(window).on("load",function(){
@@ -50,10 +51,10 @@
     // });
     setTimeout(function () {
       document.getElementById("loader-wrapperX").style = "visibility: hidden";
-    }, 1000);
+    }, 700);
     // $(document).ready( function() {
     //     $('.loader-wrapper').delay(500).fadeOut();
     // });
-    
+
   </script>
 </html>

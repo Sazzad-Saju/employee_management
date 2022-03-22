@@ -3,6 +3,7 @@
 namespace App\Http\Middleware;
 
 use Illuminate\Auth\Middleware\Authenticate as Middleware;
+use Brian2694\Toastr\Facades\Toastr;
 
 class Authenticate extends Middleware
 {
@@ -15,6 +16,7 @@ class Authenticate extends Middleware
     protected function redirectTo($request)
     {
         if (! $request->expectsJson()) {
+            Toastr::warning("You need to log in first", "Invalid Request");
             return route('login');
         }
     }

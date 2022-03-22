@@ -8,6 +8,8 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\RateLimiter;
 use Illuminate\Support\Str;
 use Illuminate\Validation\ValidationException;
+use Brian2694\Toastr\Facades\Toastr;
+use Illuminate\Validation\Rules;
 
 class LoginRequest extends FormRequest
 {
@@ -29,8 +31,8 @@ class LoginRequest extends FormRequest
     public function rules()
     {
         return [
-            'email' => ['required', 'string', 'email'],
-            'password' => ['required', 'string'],
+            'email' => ['required', 'string', 'email', 'max:20'],
+            'password' => ['required', 'string', 'min:6', Rules\Password::defaults()],
         ];
     }
 
@@ -47,6 +49,8 @@ class LoginRequest extends FormRequest
 
         if (! Auth::attempt($this->only('email', 'password'), $this->boolean('remember'))) {
             RateLimiter::hit($this->throttleKey());
+
+            // Toastr::error('Invalid Credential!','Error');
 
             throw ValidationException::withMessages([
                 'email' => trans('auth.failed'),

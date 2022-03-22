@@ -9,3 +9,4 @@
     <!-- Responisve CSS -->
     <link rel="stylesheet" href="{{asset('employee/css/responsive.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('employee/css/loader.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('employee/css/toastr.min.css')}}">
