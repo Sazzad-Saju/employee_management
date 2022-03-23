@@ -30,11 +30,11 @@ class AuthenticatedSessionController extends Controller
     public function store(LoginRequest $request)
     {
         // dd('asdfg');
-        // return $request->all();
+        // return $request->all(); password showing prob
         $request->authenticate();
 
         $request->session()->regenerate();
-        Toastr::success('Welcome '.auth()->user()->name, "Log in");
+        Toastr::success('Welcome '.auth('employee')->user()->name, "Log in");
         // return redirect()->intended(RouteServiceProvider::HOME);
         return redirect()->route('employee.dashboard.index');
     }
@@ -47,7 +47,7 @@ class AuthenticatedSessionController extends Controller
      */
     public function destroy(Request $request)
     {
-        Auth::guard('web')->logout();
+        Auth::guard('employee')->logout();
 
         $request->session()->invalidate();
 

@@ -26,7 +26,7 @@
                       <div class="col-md-12">
                         <label class="label-title" for="email">Email</label>
                         <div class="search-bar">
-                          <input type="email" id="email" placeholder="email@example.com" name="email" @error('email') style="border: 1px solid #ff0e0e" @enderror value="{{old('email')}}">
+                          <input type="email" id="email" placeholder="email@example.com" name="office_email" @error('office_email') style="border: 1px solid #ff0e0e" @enderror value="{{old('office_email')}}">
                           <i class="fas fa-envelope-open-text"></i>
                         </div>
                         {{-- @if($errors->has('email'))
