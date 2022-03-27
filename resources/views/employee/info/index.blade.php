@@ -15,6 +15,7 @@
       </div>
     </div>
     <!-- Start Form -->
+
     <form>
       <div class="row mb-3 shadow bg-white rounded-3 p-3 mx-2">
         <div class="col-xl-12">
@@ -23,61 +24,61 @@
         <div class="col-xl-6 col-lg-12 employee-view mb-3">
           <ul>
             <li class="font-weight-normal"><i class="far fa-user mr-1"></i>Name:</li>
-            <li class="">Craig Forbes</li>
+            <li class="">{{auth('employee')->user()->name}}</li>
           </ul>
         </div>
         <div class="col-xl-6 col-lg-12 employee-view mb-3">
           <ul>
             <li class="font-weight-normal"><i class="fas fa-mobile-alt mr-1"></i>Phone:</li>
-            <li class="">+1 (215) 226-3956</li>
+            <li class="">{{auth('employee')->user()->phone}}</li>
           </ul>
         </div>
         <div class="col-xl-6 col-lg-12 employee-view mb-3">
           <ul>
             <li class="font-weight-normal"><i class="far fa-envelope mr-1"></i>Personal Email:</li>
-            <li class=""> pekodiwe@mailinator.com</li>
+            <li class="">{{auth('employee')->user()->personal_email}}</li>
           </ul>
         </div>
         <div class="col-xl-6 col-lg-12 employee-view mb-3">
           <ul>
             <li class="font-weight-normal"><i class="far fa-envelope mr-1"></i>Office Email:</li>
-            <li class="">dawynogi@mailinator.com</li>
+            <li class="">{{auth('employee')->user()->office_email}}</li>
           </ul>
         </div>
         <div class="col-xl-6 col-lg-12 employee-view mb-3">
           <ul>
             <li class="font-weight-normal"><i class="fas fa-mobile-alt mr-1"></i>Office Phone:</li>
-            <li class="">+1 (215) 226-3956</li>
+            <li class="">{{auth('employee')->user()->phone}}</li>
           </ul>
         </div>
         <div class="col-xl-6 col-lg-12 employee-view mb-3">
           <ul>
             <li class="font-weight-normal"><i class="fas fa-birthday-cake mr-1"></i>Date of Birth:</li>
-            <li class="">20-05-1993</li>
+            <li class="">{{auth('employee')->user()->dob}}</li>
           </ul>
         </div>
         <div class="col-xl-6 col-lg-12 employee-view mb-3">
           <ul>
             <li class="font-weight-normal"><i class="fas fa-male mr-1"></i>Gender</li>
-            <li class="">Male</li>
+            <li class="">{{auth('employee')->user()->dob}}</li>
           </ul>
         </div>
         <div class="col-xl-6 col-lg-12 employee-view mb-3">
           <ul>
             <li class="font-weight-normal"><i class="fas fa-users mr-1"></i>Blood Group</li>
-            <li class="">A+</li>
+            <li class="">{{auth('employee')->user()->bloodGroup->name}}</li>
           </ul>
         </div>
         <div class="col-xl-6 col-lg-12 employee-view mb-3">
           <ul>
             <li class="font-weight-normal"><i class="fas fa-map-marker-alt mr-1"></i>Present Address</li>
-            <li class="">Suite No. B-7 (7th Floor) , 2/2, Pallabi Main Road, Mirpur - 11.5, Dhaka Dhaka, 1216</li>
+            <li class="">{{auth('employee')->user()->present_address}}</li>
           </ul>
         </div>
         <div class="col-xl-6 col-lg-12 employee-view mb-3">
           <ul>
             <li class="font-weight-normal"><i class="fas fa-map-marker-alt mr-1"></i>Permanent Address</li>
-            <li class="">Suite No. B-7 (7th Floor) , 2/2, Pallabi Main Road, Mirpur - 11.5, Dhaka Dhaka, 1216</li>
+            <li class="">{{auth('employee')->user()->permanent_address}}</li>
           </ul>
         </div>
         <!-- <div class="col-xl-12 col-lg-12 employee-view mb-3">
@@ -96,68 +97,68 @@
         <div class="col-xl-6 col-lg-12 employee-view mb-3">
           <ul>
             <li class="font-weight-normal"><i class="far fa-building mr-1"></i>Department</li>
-            <li class="">Development</li>
+            <li class="">{{auth('employee')->user()->department->name}}</li>
           </ul>
         </div>
         <div class="col-xl-6 col-lg-12 employee-view mb-3">
           <ul>
             <li class="font-weight-normal"><i class="fas fa-user-graduate mr-1"></i>Designation</li>
-            <li class="">Software Engineer</li>
+            <li class="">{{auth('employee')->user()->designation->name}}</li>
           </ul>
         </div>
         <div class="col-xl-6 col-lg-12 employee-view mb-3">
           <ul>
             <li class="font-weight-normal"><i class="fas fa-dollar-sign mr-1"></i>Salary</li>
-            <li class="">50000</li>
+            <li class="">{{auth('employee')->user()->salary}}</li>
           </ul>
         </div>
-        
+
         <div class="col-xl-6 col-lg-12 employee-view mb-3">
           <ul>
             <li class="font-weight-normal"><i class="far fa-calendar-alt mr-1"></i>Joining Date</li>
-            <li class="">21-09-2021</li>
+            <li class="">{{auth('employee')->user()->join_date}}</li>
           </ul>
         </div>
         <div class="col-xl-6 col-lg-12 employee-view mb-3">
           <ul>
             <li class="font-weight-normal"><i class="far fa-calendar-alt mr-1"></i>Leaveing Date</li>
-            <li class="">None</li>
+            <li class="">{{ auth('employee')->user()->quit_date ?: 'None'}}</li>
           </ul>
         </div>
         <div class="col-xl-6 col-lg-12 employee-view mb-3">
           <ul>
             <li class="font-weight-normal"><i class="fas fa-user mr-1"></i>Employee Status</li>
-            <li class="">Current</li>
+            <li class="">{{auth('employee')->user()->is_current_employee ? 'Current':'Former'}}</li>
           </ul>
         </div>
         <div class="col-xl-6 col-lg-12 employee-view mb-3">
           <ul>
             <li class="font-weight-normal"><i class="fas fa-user mr-1"></i>Emergency Contact Person</li>
-            <li class="">Explicabo Ea quasi</li>
+            <li class="">{{auth('employee')->user()->emergency_contact_person}}</li>
           </ul>
         </div>
         <div class="col-xl-6 col-lg-12 employee-view mb-3">
           <ul>
             <li class="font-weight-normal"><i class="fas fa-mobile-alt mr-1"></i>Emergency Contact Phone</li>
-            <li class=" d-xl-block">+1 (901) 395-5178</li>
+            <li class=" d-xl-block">{{auth('employee')->user()->emergency_contact_phone}}</li>
           </ul>
         </div>
         <div class="col-xl-6 col-lg-12 employee-view mb-3">
           <ul>
             <li class="font-weight-normal"><i class="fas fa-user mr-1"></i>Emergency Contact Relation</li>
-            <li class="">Cousin</li>
+            <li class="">{{auth('employee')->user()->emergency_contact_relation}}</li>
           </ul>
         </div>
         <div class="col-xl-6 col-lg-12 employee-view mb-3">
           <ul>
             <li class="font-weight-normal"><i class="fas fa-user mr-1"></i>NID Number</li>
-            <li class="">3054567827482374909</li>
+            <li class="">{{auth('employee')->user()->nid_number}}</li>
           </ul>
         </div>
         <div class="col-xl-12 col-lg-12 employee-view mb-3">
           <ul>
             <li class="d-block font-weight-normal"><i class="fas fa-map-marker-alt mr-1"></i>Emergency Contact Address</li>
-            <li class="d-block">Suite No. B-7 (7th Floor) , 2/2, Pallabi Main Road, Mirpur - 11.5, Dhaka Dhaka, 1216</li>
+            <li class="d-block">{{auth('employee')->user()->emergency_contact_address}}</li>
           </ul>
         </div>
         <div class="col-xl-6 col-lg-6 col-md-12 col-sm-6 employee-view mb-3">

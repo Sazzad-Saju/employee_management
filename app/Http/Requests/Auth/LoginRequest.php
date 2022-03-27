@@ -11,6 +11,9 @@ use Illuminate\Validation\ValidationException;
 use Brian2694\Toastr\Facades\Toastr;
 use Illuminate\Validation\Rules;
 
+use App\Models\Employee;
+use App\Models\Designation;
+
 class LoginRequest extends FormRequest
 {
     /**
@@ -56,7 +59,10 @@ class LoginRequest extends FormRequest
                 'office_email' => trans('auth.failed'),
             ]);
         }
-
+        // $employees = Employee::with('designation')->latest()->get();
+        // $designations = Designation::all();
+        // return $employees;
+        // dd($designations);
         RateLimiter::clear($this->throttleKey());
     }
 

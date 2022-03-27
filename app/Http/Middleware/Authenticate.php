@@ -17,7 +17,7 @@ class Authenticate extends Middleware
     {
         if (! $request->expectsJson()) {
             Toastr::warning("You need to log in first", "Invalid Request");
-            return route('login');
+            return route('employee.login.create');
         }
     }
 }

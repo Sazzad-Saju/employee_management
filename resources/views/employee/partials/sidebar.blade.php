@@ -3,9 +3,9 @@
         <!-- Profile Image Card  -->
         <div class="image-card">
             <img src="{{asset('employee/img/avatar.jpeg')}}" alt="user-img" class="img-fluid pb-2">
-            <div class="user-name">{{auth()->user()->name}}</div>
-            <div class="user-designation">graphics designer</div>
-            <div class="user-number">{{auth()->user()->phone}}</div>
+            <div class="user-name">{{auth('employee')->user()->name}}</div>
+            <div class="user-designation">{{auth('employee')->user()->designation->name}}</div>
+            <div class="user-number">{{auth('employee')->user()->phone}}</div>
             <ul class="pt-1">
                 <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
                 <li><a href="#"><i class="fab fa-linkedin"></i></a></li>

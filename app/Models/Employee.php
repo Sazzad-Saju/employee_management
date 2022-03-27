@@ -17,6 +17,26 @@ class Employee extends Authenticatable
     protected $guard= 'employee';
     protected $guarded = [];
 
+    public function designation()
+    {
+        return $this->belongsTo(Designation::class);
+
+    }
+
+    public function bloodGroup()
+    {
+        return $this->belongsTo(BloodGroup::class);
+    }
+
+    public function department(){
+        return $this->belongsTo(Department::class);
+    }
+
+    public function leaves()
+    {
+        return $this->hasMany(Leave::class);
+
+    }
 //     protected $appends = ['leave_duration','leave_duration_in_minute'];
 
 //     /**

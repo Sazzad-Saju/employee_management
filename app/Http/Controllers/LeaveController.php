@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Middleware\Employee;
 use Illuminate\Http\Request;
+use App\Models\Leave;
 
 class LeaveController extends Controller
 {
@@ -13,7 +15,15 @@ class LeaveController extends Controller
      */
     public function index()
     {
-        return view('employee.leave.index');
+        // $leaves = Leave::all();  //all leave
+        // $leaves = Leave::with('employee')->get(); all leave with employee info
+        // $leave = Leave::with('employee')->findOrFail(1);
+        // return auth('employee')->user()->leave->get();
+        // return $leave;
+        $eid = auth('employee')->user()->id;
+        $leaves = Leave::where('employee_id', $eid)->get();
+        // return Employee::with('employee')->get();
+        return view('employee.leave.index',compact('leaves'));
     }
 
     /**
