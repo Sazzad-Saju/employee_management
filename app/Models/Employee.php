@@ -37,6 +37,11 @@ class Employee extends Authenticatable
         return $this->hasMany(Leave::class);
 
     }
+    public function loans()
+    {
+        return $this->hasMany(Loan::class);
+
+    }
 //     protected $appends = ['leave_duration','leave_duration_in_minute'];
 
 //     /**

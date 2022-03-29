@@ -2,7 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\LoanRequest;
+use App\Models\Loan;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Brian2694\Toastr\Facades\Toastr;
 
 class LoanController extends Controller
 {
@@ -13,7 +17,8 @@ class LoanController extends Controller
      */
     public function index()
     {
-        return view('employee.loan.index');
+        $loans = Loan::where(['employee_id'=> auth('employee')->user()->id ])->get();
+        return view('employee.loan.index', compact('loans'));
     }
 
     /**
@@ -32,9 +37,24 @@ class LoanController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(LoanRequest $request)
     {
-        //
+        // return $request->all();
+        // return $request->amount;
+        // $newLoan = new Loan;
+        // $newLoan->employee_id = auth('employee')->user()->id;
+        // $newLoan->issue_date = Carbon::now();
+        // $newLoan->amount = $request->amount;
+        // $newLoan->reason = $request->reason;
+        // $newLoan->save();
+        $loan = Loan::create([
+            'employee_id'=>auth('employee')->user()->id,
+            'issue_date'=> Carbon::now(),
+            'amount' => $request->amount,
+            'reason' => $request->reason,
+        ]);
+        Toastr::success('Successfully applied for a loan', "Loan Request");
+        return redirect()->route('employee.loan.index');
     }
 
     /**

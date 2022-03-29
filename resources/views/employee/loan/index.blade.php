@@ -15,43 +15,46 @@
       </div>
     </div>
 
+    @foreach ($loans as $loan)
     <!-- Start Form -->
     <form>
       <div class="row mb-3 shadow bg-white rounded-3 p-3 mx-2">
         <div class="col-xl-5 col-lg-12 employee-view mb-3">
           <ul>
             <li><i class="fas fa-dollar-sign mr-1"></i>Loan Amount:</li>
-            <li class="">20000</li>
+            <li class="">{{$loan->amount}}</li>
           </ul>
         </div>
         <div class="col-xl-7 col-lg-12 employee-view mb-3">
           <ul>
             <li><i class="fas fa-file-invoice-dollar mr-1"></i>Loan Status:</li>
-            <li class="">Pending</li>
+            <li class="">{{$loan->status}}</li>
+            {{-- need new column --}}
           </ul>
         </div>
         <div class="col-xl-5 col-lg-12 employee-view mb-3">
           <ul>
             <li><i class="far fa-lightbulb mr-1"></i>Reason:</li>
-            <li class=""> Personal</li>
+            <li class="">{{$loan->reason}}</li>
           </ul>
         </div>
-        
+
         <div class="col-xl-7 col-lg-12 employee-view mb-3">
           <ul>
-            <li><i class="far fa-calendar-alt mr-1"></i>Approval Date:</li>
-            <li class="">20-05-1993</li>
+            <li><i class="far fa-calendar-alt mr-1"></i>Issue Date:</li>
+            <li class="">{{$loan->issue_date}}</li>
           </ul>
         </div>
         <div class="col-xl-5 col-lg-12 employee-view mb-3">
           <ul>
             <li><i class="far fa-calendar-alt mr-1"></i>Return Date:</li>
-            <li class="">20-05-1993</li>
+            <li class="">{{$loan->return_date}}</li>
           </ul>
         </div>
       </div>
     </form>
      <!-- End Form -->
-     
+     @endforeach
+
   </div>
 @endsection

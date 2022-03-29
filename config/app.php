@@ -67,7 +67,8 @@ return [
     |
     */
 
-    'timezone' => 'UTC',
+    // 'timezone' => 'UTC+6',
+    'timezone' => 'Asia/Dhaka',
 
     /*
     |--------------------------------------------------------------------------
@@ -167,6 +168,7 @@ return [
          */
         // toastr
         Brian2694\Toastr\ToastrServiceProvider::class,
+        Barryvdh\Debugbar\ServiceProvider::class,
         /*
          * Application Service Providers...
          */
@@ -229,7 +231,7 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
         // toastr
         'Toastr'  => Brian2694\Toastr\Facades\Toastr::class,
-
+        'Debugbar' => Barryvdh\Debugbar\Facades\Debugbar::class,
     ],
 
 ];

@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\AttendanceRequest;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
-
+use Brian2694\Toastr\Facades\Toastr;
+use App\Models\Attendance;
 class AttendanceController extends Controller
 {
     /**
@@ -13,7 +16,8 @@ class AttendanceController extends Controller
      */
     public function index()
     {
-        return view('employee.attendance.index');
+        $attendances = Attendance::where(['employee_id' => auth('employee')->user()->id])->get();
+        return view('employee.attendance.index',compact('attendances'));
     }
 
     /**
@@ -23,8 +27,8 @@ class AttendanceController extends Controller
      */
     public function create()
     {
-        // return "ok";
-        return view('employee.attendance.create');
+        $date = Carbon::now();
+        return view('employee.attendance.create', compact('date'));
     }
 
     /**
@@ -33,9 +37,20 @@ class AttendanceController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(AttendanceRequest $request)
     {
-        //
+        // return $request->all();
+        $data['employee_id'] = auth('employee')->user()->id;
+        $data['date'] = Carbon::now()->format('Y/m/d');
+        $data['start_time'] = Carbon::now()->format('H:i:s');
+        $time = strtotime($request->end_time);
+        $data['end_time'] = date('H:i:s', $time);
+
+
+
+        Attendance::create($data);
+        Toastr::success('Successfully inserted attendance', "Daily Attendance");
+        return redirect()->route('employee.attendance.index');
     }
 
     /**
