@@ -2,7 +2,12 @@
 
 namespace App\Http\Controllers;
 
+// use App\Http\Middleware\Employee;
+use App\Models\Employee;
+use App\Models\Report;
+use Brian2694\Toastr\Facades\Toastr;
 use Illuminate\Http\Request;
+use App\Http\Requests\ReportRequest;
 
 class FirController extends Controller
 {
@@ -13,8 +18,8 @@ class FirController extends Controller
      */
     public function index()
     {
-        // return 'ok';
-        return view('employee.fir.index');
+        $reports = Report::where(['created_by'=>auth('employee')->user()->id])->orderBy('created_at','desc')->get();
+        return view('employee.fir.index',compact('reports'));
     }
 
     /**
@@ -24,7 +29,8 @@ class FirController extends Controller
      */
     public function create()
     {
-        return view('employee.fir.create');
+        $employees = Employee::select(['id', 'name'])->whereNotIn('id', [auth('employee')->user()->id])->get();
+        return view('employee.fir.create',compact('employees'));
     }
 
     /**
@@ -33,9 +39,15 @@ class FirController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ReportRequest $request)
     {
-        //
+        $data = $request->only(['level', 'employee_id', 'date', 'description']);
+        $data['date'] = date('Y/m/d',strtotime($data['date']));
+        $data['created_by'] = auth('employee')->user()->id;
+        $Employee = Employee::where('id',$data['employee_id'])->first();
+        Report::create($data);
+        Toastr::success('You have file a report against '.$Employee->name, "First Information Report");
+        return redirect()->route('employee.fir.index');
     }
 
     /**

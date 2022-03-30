@@ -9,40 +9,57 @@
     </div>
 
     <!-- Start Form -->
-    <form>
+    <form method="POST" action="{{route('employee.fir.store')}}">
+        @csrf
       <div class="row mb-5">
         <div class="col-xl-4 col-lg-6">
           <div class="search-bar mb-3">
             <div class="selectgroup">
-              <select>
+              <select name="level"  @error('level') style="border: 1px solid #ff0e0e" @enderror>
                 <option value="">Choose Offence level</option>
-                <option value="1">Minor</option>
-                <option value="2">Mejor</option>
-                <option value="3">Critical</option>
+                <option value="Minor" {{ old('level') === "Minor" ? 'selected' : '' }}>Minor</option>
+                <option value="Mejor" {{ old('level') === "Mejor" ? 'selected' : '' }}>Mejor</option>
+                <option value="Critical" {{ old('level') === "Critical" ? 'selected' : '' }}>Critical</option>
               </select>
+                @error('level')
+                    <small class="text-danger">{{ $message }}</small>
+                @enderror
             </div>
           </div>
         </div>
         <div class="col-xl-4 col-lg-6">
           <div class="search-bar mb-3">
             <div class="selectgroup">
-              <select>
+              <select name="employee_id"  @error('employee_id') style="border: 1px solid #ff0e0e" @enderror value="{{old('employee_id')}}">
                 <option value="">Choose Employee</option>
-                <option value="1">John</option>
-                <option value="2">Domingo</option>
-                <option value="3">Rasel</option>
+                @foreach($employees as $employee)
+                    @if(old('employee_id')==$employee->id)
+                        <option value={{$employee->id}} selected >{{$employee->name}}</option>
+                    @else
+                        <option value={{$employee->id}}>{{$employee->name}}</option>
+                    @endif
+                @endforeach
               </select>
+                @error('employee_id')
+                    <small class="text-danger">{{ $message }}</small>
+                @enderror
             </div>
           </div>
         </div>
         <div class="col-xl-4 col-lg-12">
           <div class="search-bar mb-3">
-            <input type="text" class="singleDateRange value" placeholder="Date" id="startDate">
+            <input type="text" class="singleDateRange value" placeholder="Date" id="startDate" name="date" @error('date') style="border: 1px solid #ff0e0e" @enderror value="{{ old(date('d/m/Y',strtotime('date'))) }}">
+            @error('date')
+                <small class="text-danger">{{ $message }}</small>
+            @enderror
           </div>
         </div>
         <div class="col-xl-12 col-lg-12">
           <div class="textareafield mb-3">
-            <textarea placeholder="Discription" rows="5"></textarea>
+            <textarea placeholder="Discription" rows="5" name="description"  @error('description') style="border: 1px solid #ff0e0e" @enderror>{{{ old('description') }}}</textarea>
+            @error('description')
+                <small class="text-danger">{{ $message }}</small>
+            @enderror
           </div>
         </div>
       </div>
