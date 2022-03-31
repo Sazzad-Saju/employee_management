@@ -9,7 +9,7 @@
             <span class="title">Employee Information</span>
           </div>
           <div>
-            <a href="{{route('employee.info.create')}}" class="hvr-icon-float-away"><i class="fas fa-plus hvr-icon"></i> Add Item</a>
+            <a href="{{route('employee.info.edit',auth('employee')->user()->id)}}" class="hvr-icon-float-away"><i class="fas fa-plus hvr-icon"></i>Update Profile</a>
           </div>
         </div>
       </div>

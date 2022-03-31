@@ -1,7 +1,7 @@
 @extends('employee.master')
 @section('title','Attendance')
-@section('content')
 
+@section('content')
 <div class="main">
 
     <div class="row">
@@ -44,5 +44,17 @@
     <!-- End Form -->
     @endforeach
 
+<script>
+    // $(window).on("load",function(){
+    //   $(".loader-wrapper").fadeOut("slow");
+    // });
+    // setTimeout(function () {
+    //   document.getElementById("loader-wrapperX").style = "visibility: hidden";
+    // }, 700);
+    // $(document).ready( function() {
+    //     $('.loader-wrapper').delay(500).fadeOut();
+    // });
+
+  </script>
 </div>
 @endsection
