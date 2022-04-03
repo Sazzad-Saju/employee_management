@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\InfoRequest;
 use App\Models\BloodGroup;
 use App\Models\Department;
 use App\Models\Designation;
@@ -78,10 +79,10 @@ class InfoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(InfoRequest $request, $id)
     {
         // return $request->all();
-        DB::table('employees')->where('id',$id)->update([
+        Employee::findOrFail($id)->update([
             'name' => $request->name,
             'phone' => $request->phone,
             'personal_email'=> $request->personal_email,

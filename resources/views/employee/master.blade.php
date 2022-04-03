@@ -21,12 +21,9 @@
 
               <!-- ============== Start Right Section =================-->
               <div class="col-md-8">
-                  <div class="loader-wrapper" id="loader-wrapperX">
-                        <span class="loader"><span class="loader-inner"></span></span>
-                    </div>
-                  {{-- <div class="test-loader">
-
-                  </div> --}}
+                <div class="loader-wrapper" id="loader-wrapperX">
+                    <span class="loader"><span class="loader-inner"></span></span>
+                </div>
                 <div class="user-details">
 
                     <!-- Start Top Section -->

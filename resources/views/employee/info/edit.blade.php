@@ -19,6 +19,9 @@
           <div class="search-bar mb-3">
             <input type="text" id="firstName" placeholder="First Name" name="name" value="{{$employee->name}}">
             <i class="far fa-user"></i>
+            @error('name')
+                <small class="text-danger">{{ $message }}</small>
+            @enderror
           </div>
         </div>
         {{-- <div class="col-xl-4 col-lg-6">
@@ -31,24 +34,36 @@
           <div class="search-bar mb-3">
             <input type="text" id="phoneNumber" placeholder="Phone Number" name="phone" value="{{$employee->phone}}">
             <i class="fas fa-mobile-alt"></i>
+            @error('phone')
+                <small class="text-danger">{{ $message }}</small>
+            @enderror
           </div>
         </div>
         <div class="col-xl-4 col-lg-6">
           <div class="search-bar mb-3">
             <input type="email" id="personalEmail" placeholder="Personal Email" name="personal_email" value="{{$employee->personal_email}}">
             <i class="far fa-envelope"></i>
+            @error('personal_email')
+                <small class="text-danger">{{ $message }}</small>
+            @enderror
           </div>
         </div>
         <div class="col-xl-4 col-lg-6">
           <div class="search-bar mb-3">
             <input type="email" id="officeEmail" placeholder="Office Email" name="office_email" value="{{$employee->office_email}}">
             <i class="far fa-envelope"></i>
+            @error('office_email')
+                <small class="text-danger">{{ $message }}</small>
+            @enderror
           </div>
         </div>
         <div class="col-xl-4 col-lg-6">
           <div class="search-bar mb-3">
             <input type="text" id="officePhone" placeholder="Office Phone" name="office_phone" value="{{$employee->office_phone}}">
             <i class="fas fa-mobile-alt"></i>
+            @error('office_phone')
+                <small class="text-danger">{{ $message }}</small>
+            @enderror
           </div>
         </div>
         <div class="col-xl-4 col-lg-6">
@@ -57,7 +72,9 @@
             {{-- <input type="date" id="dateOfBirth" placeholder="Date of Birth" value="{{date('d/m/Y',strtotime($employee->dob))}}"> --}}
             <input type="date" id="dateOfBirth" placeholder="Date of Birth" name="dob" value="{{$employee->dob}}">
             {{-- <input type="text" class="singleDateRange value" id="dateOfBirth" placeholder="Date of Birth" value="18-11-1994"> --}}
-
+            @error('dob')
+                <small class="text-danger">{{ $message }}</small>
+            @enderror
           </div>
         </div>
         <div class="col-xl-4 col-lg-6">
@@ -89,11 +106,17 @@
         <div class="col-xl-6 col-lg-12">
           <div class="textareafield mb-3">
             <textarea placeholder="Present Address" rows="5" name="present_address">{{$employee->present_address}}</textarea>
+            @error('present_address')
+                <small class="text-danger">{{ $message }}</small>
+            @enderror
           </div>
         </div>
         <div class="col-xl-6 col-lg-12">
           <div class="textareafield mb-3">
             <textarea placeholder="Permanent Address" rows="5" name="permanent_address">{{$employee->permanent_address}}</textarea>
+            @error('permanent_address')
+                <small class="text-danger">{{ $message }}</small>
+            @enderror
           </div>
         </div>
         <div class="col-xl-6 col-lg-12">
@@ -142,6 +165,9 @@
           <div class="search-bar mb-3">
             <input type="text" id="salary" placeholder="Salary" name="salary" value="{{$employee->salary}}">
             <i class="fas fa-dollar-sign"></i>
+            @error('salary')
+                <small class="text-danger">{{ $message }}</small>
+            @enderror
           </div>
         </div>
         <div class="col-xl-4 col-lg-12">
@@ -187,7 +213,9 @@
           <div class="search-bar mb-3">
             <label for="profilepicture" class="d-block pb-2 ps-2">NID Number</label>
             <input type="number" id="nidNumber" name="nid_number" value="{{$employee->nid_number}}">
-
+            @error('nid_number')
+                <small class="text-danger">{{ $message }}</small>
+            @enderror
           </div>
         </div>
       </div>
@@ -199,12 +227,18 @@
           <div class="search-bar mb-3">
             <input type="text" id="contactName" placeholder="Emergency Contact Name" name="emergency_contact_person" value="{{$employee->emergency_contact_person}}">
             <i class="fas fa-user"></i>
+            @error('emergency_contact_person')
+                <small class="text-danger">{{ $message }}</small>
+            @enderror
           </div>
         </div>
         <div class="col-xl-4 col-lg-6">
           <div class="search-bar mb-3">
             <input type="text" id="phoneNumber" placeholder="Emergency Contact Phone" name="emergency_contact_phone" value="{{$employee->emergency_contact_phone}}">
             <i class="fas fa-mobile-alt"></i>
+            @error('emergency_contact_phone')
+                <small class="text-danger">{{ $message }}</small>
+            @enderror
           </div>
         </div>
         <div class="col-xl-4 col-lg-6">
