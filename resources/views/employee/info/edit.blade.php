@@ -8,7 +8,7 @@
       </div>
     </div>
     <!-- Start Form -->
-    <form method="POST" action="{{route('employee.info.update',auth('employee')->user()->id)}}">
+    <form method="POST" action="{{route('employee.info.update',auth('employee')->user()->id)}}" enctype="multipart/form-data">
         @csrf
         @method('PUT')
       <div class="row mb-5">
@@ -79,7 +79,7 @@
         </div>
         <div class="col-xl-4 col-lg-6">
           <div class="mb-3">
-            <label for="gender" class="d-block pb-3">Gender</label>
+            <label for="gender" name="gender" class="d-block pb-3">Gender</label>
             <div class="form-check form-check-inline">
               <input class="form-check-input" type="radio" name="gender" value="Male" id="inlineRadio1" {{ $employee->gender == "Male" ? 'checked' : '' }} >
               <label class="form-check-label fw-normal" for="inlineRadio1">Male</label>
@@ -122,8 +122,11 @@
         <div class="col-xl-6 col-lg-12">
           <div class="search-bar filetype mb-3">
             <label for="profilepicture" class="d-block pb-2 ps-2">Profile Picture</label>
-            <input type="file">
-            <img src="{{asset('employee/img/avatar.jpeg')}}" width="180" class="img-fluid my-2 ml-3"  alt="avatar">
+            <input type="file" name="profile_image">
+            @error('profile_image')
+                <small class="text-danger">{{ $message }}</small>
+            @enderror
+            <img src="{{asset('storage/'.$employee->profile_image)}}" width="180" class="img-fluid my-2 ml-3"  alt="avatar">
           </div>
         </div>
       </div>
@@ -198,15 +201,15 @@
         <div class="col-xl-4 col-lg-6">
           <div class="search-bar filetype mb-3">
             <label for="profilepicture" class="d-block pb-2 ps-2">Certificate Image</label>
-            <input type="file">
-            <img src="{{asset('employee/img/avatar.jpeg')}}" width="180" class="img-fluid my-2 ms-3"  alt="avatar">
+            <input type="file" name="certificate_image">
+            <img src="{{asset('/storage'.$employee->certificate_image)}}" width="180" class="img-fluid my-2 ms-3"  alt="avatar">
           </div>
         </div>
         <div class="col-xl-4 col-lg-6">
           <div class="search-bar filetype mb-3">
             <label for="profilepicture" class="d-block pb-2 ps-2">NID Image</label>
-            <input type="file">
-            <img src="{{asset('employee/img/avatar.jpeg')}}" width="180" class="img-fluid my-2 ms-3"  alt="avatar">
+            <input type="file" name="nid_image">
+            <img src="{{asset('/storage'.$employee->nid_image)}}" width="180" class="img-fluid my-2 ms-3"  alt="avatar">
           </div>
         </div>
         <div class="col-xl-4 col-lg-12">
@@ -258,6 +261,11 @@
           <button type="submit" class="btn btn-sm defaultBtn float-right">Submit</button>
         </div>
       </div>
+    @if ($errors->any())
+        @foreach ($errors->all() as $error)
+                {{ Toastr()->info($error, "Validation Error")}}
+        @endforeach
+    @endif
     </form>
     <!-- End Form -->
   </div>

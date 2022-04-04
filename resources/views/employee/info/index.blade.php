@@ -165,7 +165,7 @@
           <ul>
             <li class="d-block font-weight-normal"><i class="fas fa-certificate mr-1"></i>Certificate Image</li>
             <li class="d-block">
-              <img src="{{asset('employee/img/certificate.jpeg')}}" width="180" class="img-fluid img-thumbnail p-1 my-2"  alt="avatar">
+              <img src="{{asset('/storage'.auth('employee')->user()->certificate_image)}}" width="180" class="img-fluid img-thumbnail p-1 my-2"  alt="avatar">
             </li>
           </ul>
         </div>
@@ -173,7 +173,7 @@
           <ul>
             <li class="d-block font-weight-normal"><i class="fas fa-id-card mr-1"></i>NID Image</li>
             <li class="d-block">
-              <img src="{{asset('employee/img/nid.webp')}}" width="180" class="img-fluid img-thumbnail p-1 my-2"  alt="avatar">
+              <img src="{{asset('/storage'.auth('employee')->user()->nid_image)}}" width="180" class="img-fluid img-thumbnail p-1 my-2"  alt="avatar">
             </li>
           </ul>
         </div>

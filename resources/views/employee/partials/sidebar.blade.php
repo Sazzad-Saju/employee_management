@@ -2,7 +2,7 @@
     <div class="user-info mb-3" id="sidebar">
         <!-- Profile Image Card  -->
         <div class="image-card">
-            <img src="{{asset('employee/img/avatar.jpeg')}}" alt="user-img" class="img-fluid pb-2">
+            <img src="{{asset('storage/'.auth('employee')->user()->profile_image)}}" alt="user-img" class="img-fluid pb-2">
             <div class="user-name">{{auth('employee')->user()->name}}</div>
             <div class="user-designation">{{auth('employee')->user()->designation->name}}</div>
             <div class="user-number">{{auth('employee')->user()->phone}}</div>

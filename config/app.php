@@ -178,6 +178,9 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
+        // image intervention
+        Intervention\Image\ImageServiceProvider::class,
+
     ],
 
     /*
@@ -232,6 +235,7 @@ return [
         // toastr
         'Toastr'  => Brian2694\Toastr\Facades\Toastr::class,
         'Debugbar' => Barryvdh\Debugbar\Facades\Debugbar::class,
+        'Image' => Intervention\Image\Facades\Image::class,
     ],
 
 ];
