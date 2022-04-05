@@ -92,32 +92,13 @@ class InfoController extends Controller
         // }
 
         // dd($filename);
-        Employee::findOrFail($id)->update([
-            'name' => $request->name,
-            'phone' => $request->phone,
-            'personal_email'=> $request->personal_email,
-            'office_email' => $request->office_email,
-            'office_phone' => $request->office_phone,
-            'dob' => $request->dob,
-            'gender' => $request->gender,
-            'blood_group_id' => $request->blood_group_id,
-            'present_address' => $request->present_address,
-            'permanent_address' => $request->permanent_address,
-            'department_id' => $request->department_id,
-            'salary' => $request->salary,
-            'join_date' => $request->join_date,
-            'quit_date' => $request->quit_date,
-            'nid_number' => $request->nid_number,
-            'emergency_contact_person' => $request->emergency_contact_person,
-            'emergency_contact_relation' => $request->emergency_contact_relation,
-            'emergency_contact_address' => $request->emergency_contact_address,
-
-        ]);
+        $data = $request->except(['profile_image','certificate_image','nid_image']);
+        Employee::findOrFail($id)->update($data);
         //image upload
         if($request->hasFile('profile_image')){
             if(auth('employee')->user()->profile_image){
                 $file_array = explode('/', auth('employee')->user()->profile_image);
-                  $fileUploadService->updateFile([
+                $fileUploadService->updateFile([
                      'existing_file'=>end($file_array),
                      'storage_folder'=>'employee/profile_pic',
                      'request_file_name'=>'profile_image',

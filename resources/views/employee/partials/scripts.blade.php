@@ -9,4 +9,5 @@
 <script src="{{asset('employee/js/main.js')}}"></script>
 <script src="{{asset('employee/js/toastr.min.js')}}"></script>
 
+
 {!! Toastr::message() !!}

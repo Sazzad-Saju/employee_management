@@ -1,6 +1,7 @@
 @extends('employee.master')
 @section('title','Create Leave')
 @section('content')
+{{-- ckeditor  --}}
 <div class="main">
     <div class="row">
       <div class="col-md-12">

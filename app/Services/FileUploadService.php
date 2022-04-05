@@ -23,7 +23,7 @@ class FileUploadService
     {
         $existingFile = $fileUploadInfo['existing_file'];
         $requestFileName = $fileUploadInfo['request_file_name'];
-         $filePath = $filePath = storage_path('app/public/' . $fileUploadInfo['storage_folder'] . '/' .$fileUploadInfo['existing_file']);
+        $filePath = $filePath = storage_path('app/public/' . $fileUploadInfo['storage_folder'] . '/' .$fileUploadInfo['existing_file']);
         if (file_exists($filePath)) {
             unlink($filePath);
             $fileName = time() . Str::random(8) . '.' . request()->$requestFileName->extension();

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\ConveyanceBill;
 use Illuminate\Http\Request;
 
 class BillController extends Controller
@@ -13,7 +14,9 @@ class BillController extends Controller
      */
     public function index()
     {
-        return view('employee.bill.index');
+
+        $bills = ConveyanceBill::where(['employee_id'=> auth('employee')->user()->id])->orderBy('created_at','desc')->get();
+        return view('employee.bill.index',compact('bills'));
     }
 
     /**

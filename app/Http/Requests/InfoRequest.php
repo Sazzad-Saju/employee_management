@@ -44,7 +44,6 @@ class InfoRequest extends FormRequest
             'quit_date' => 'nullable|date|after: join_date', //nullable
             'is_current_employee' => 'sometimes|in: 1:0',
             'is_provision_period' => 'sometimes|in:1:0',
-            //is_current_employee,is_provision_period (any one value comes)
             'nid_number' => ['numeric','required','regex:/(?:\d{17}|\d{13}|\d{10})/'],
             'emergency_contact_person' => 'required',
             'emergency_contact_phone' => ['regex:/^\+?(88)?0?1[3456789][0-9]{8}\b/'],

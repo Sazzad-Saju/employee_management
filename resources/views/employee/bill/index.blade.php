@@ -9,49 +9,51 @@
             <span class="title">Conveyance</span>
           </div>
           <div>
-            <a href="{{route('employee.bill.create')}}" class="hvr-icon-float-away"><i class="fas fa-plus hvr-icon"></i> Add Item</a>
+            <a href="{{route('employee.bill.create')}}" class="hvr-icon-float-away" style="display: none"><i class="fas fa-plus hvr-icon"></i> Add Item</a>
           </div>
         </div>
       </div>
     </div>
     <!-- Start Form -->
     <form>
+        @foreach($bills as $bill)
       <div class="row mb-3 shadow bg-white rounded-3 p-3 mx-2">
         <div class="col-xl-5 col-lg-12 employee-view mb-3">
           <ul>
             <li><i class="fas fa-money-bill-wave mr-1"></i>Bill Type:</li>
-            <li class="">Bkash</li>
+            <li class="">{{$bill->billType->name}}</li>
           </ul>
         </div>
         <div class="col-xl-7 col-lg-12 employee-view mb-3">
           <ul>
             <li><i class="fas fa-dollar-sign mr-1"></i>Amount:</li>
-            <li class="">5000</li>
+            <li class="">{{$bill->amount}}</li>
           </ul>
         </div>
         <div class="col-xl-5 col-lg-12 employee-view mb-3">
           <ul>
             <li><i class="far fa-calendar-alt mr-1"></i>Date:</li>
-            <li class=""> 12/11/2021</li>
+            <li class="">{{$bill->date}}</li>
           </ul>
         </div>
-        
+
         <div class="col-xl-5 col-lg-12 employee-view mb-3">
           <ul>
             <li><i class="far fa-smile mr-1"></i>Approval</li>
-            <li class="text-success">Approved</li>
+            <li class="text-success">{{$bill->is_approved ? 'Approved':'Pending'}}</li>
           </ul>
         </div>
         <div class="col-xl-12 col-lg-12 employee-view mb-3">
           <ul>
-            <li><i class="far fa-lightbulb mr-1"></i> Reason</li>
+            <li><i class="far fa-lightbulb mr-1"></i>Description: </li>
             <li>
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nihil dolore id adipisci illo nostrum, molestias minus tempora maxime numquam voluptatibus aut maiores aliquam sunt, at alias quis sit laudantium tempore?
+              Dear Mr. {{$bill->employee->name}}, {{ $bill->description}}
             </li>
           </ul>
         </div>
-        
+
       </div>
+      @endforeach
     </form>
     <!-- End Form -->
   </div>
