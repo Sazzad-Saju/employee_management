@@ -34,7 +34,7 @@
         <div class="col-xl-5 col-lg-12 employee-view mb-3">
           <ul>
             <li><i class="far fa-lightbulb mr-1"></i>Reason:</li>
-            <li class="">{{$leave['reason']}}</li>
+            <li class="">{!!$leave['reason']!!}</li>
           </ul>
         </div>
         <div class="col-xl-7 col-lg-12 employee-view mb-3">

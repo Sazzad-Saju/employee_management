@@ -35,7 +35,7 @@
         <div class="col-xl-5 col-lg-12 employee-view mb-3">
           <ul>
             <li><i class="far fa-lightbulb mr-1"></i>Reason:</li>
-            <li class="">{{$loan->reason}}</li>
+            <li class="">{!!$loan->reason!!}</li>
           </ul>
         </div>
 

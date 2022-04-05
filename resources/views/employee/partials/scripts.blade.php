@@ -9,5 +9,8 @@
 <script src="{{asset('employee/js/main.js')}}"></script>
 <script src="{{asset('employee/js/toastr.min.js')}}"></script>
 
+{{-- ckeditor --}}
+<script src="https://cdn.ckeditor.com/ckeditor5/30.0.0/classic/ckeditor.js"></script>
+
 
 {!! Toastr::message() !!}

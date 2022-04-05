@@ -32,9 +32,9 @@
             </div>
           </div>
         </div> --}}
-        <div class="col-xl-12 col-lg-12">
+        <div class="col-xl-12 col-lg-12 mt-3">
           <div class="textareafield mb-3">
-            <textarea placeholder="Reason" rows="5" name="reason" @error('reason') style="border: 1px solid #ff0e0e" @enderror>{{{ old('reason') }}}</textarea>
+            <textarea id="editor" placeholder="Reason" rows="5" name="reason" @error('reason') style="border: 1px solid #ff0e0e" @enderror>{{{ old('reason') }}}</textarea>
             @error('reason')
                 <small class="text-danger">{{ $message }}</small>
             @enderror
@@ -75,4 +75,13 @@
     </form>
     <!-- End Form -->
   </div>
+@endsection
+@section('ckeditor')
+<script>
+    ClassicEditor
+        .create( document.querySelector( '#editor' ) )
+        .catch( error => {
+            console.error( error );
+        } );
+</script>
 @endsection
