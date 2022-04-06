@@ -43,18 +43,9 @@
     </form>
     <!-- End Form -->
     @endforeach
+    <div class="d-flex justify-content-center">
+        {{$attendances->links()}}
+    </div>
 
-<script>
-    // $(window).on("load",function(){
-    //   $(".loader-wrapper").fadeOut("slow");
-    // });
-    // setTimeout(function () {
-    //   document.getElementById("loader-wrapperX").style = "visibility: hidden";
-    // }, 700);
-    // $(document).ready( function() {
-    //     $('.loader-wrapper').delay(500).fadeOut();
-    // });
-
-  </script>
 </div>
 @endsection

@@ -18,7 +18,7 @@ class FirController extends Controller
      */
     public function index()
     {
-        $reports = Report::where(['created_by'=>auth('employee')->user()->id])->orderBy('created_at','desc')->get();
+        $reports = Report::where(['created_by'=>auth('employee')->user()->id])->orderBy('created_at','desc')->paginate(3);
         return view('employee.fir.index',compact('reports'));
     }
 

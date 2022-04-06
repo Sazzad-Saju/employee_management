@@ -15,7 +15,7 @@ class DashboardController extends Controller
         // return Carbon::now()->format('Y-m-d H:i:s');
         // return Carbon::now('Asia/Dhaka')->format('H:i:s');
 
-        $notices = Notice::select(['message', 'created_at'])->orderBy('created_at','desc')->get();
+        $notices = Notice::select(['message', 'created_at'])->orderBy('created_at','desc')->paginate(3);
 
         return view('employee.dashboard.dashboard',compact('notices'));
     }

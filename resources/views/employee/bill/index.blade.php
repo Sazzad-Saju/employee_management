@@ -15,8 +15,8 @@
       </div>
     </div>
     <!-- Start Form -->
+    @foreach($bills as $bill)
     <form>
-        @foreach($bills as $bill)
       <div class="row mb-3 shadow bg-white rounded-3 p-3 mx-2">
         <div class="col-xl-5 col-lg-12 employee-view mb-3">
           <ul>
@@ -53,8 +53,11 @@
         </div>
 
       </div>
-      @endforeach
     </form>
+    @endforeach
     <!-- End Form -->
+    <div class="d-flex justify-content-center">
+        {{$bills->links()}}
+    </div>
   </div>
 @endsection

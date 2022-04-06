@@ -67,6 +67,8 @@
     </form>
     <!-- End Form -->
     @endforeach
-
+    <div class="d-flex justify-content-center">
+        {{$leaves->links()}}
+    </div>
   </div>
 @endsection

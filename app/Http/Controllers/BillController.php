@@ -15,7 +15,7 @@ class BillController extends Controller
     public function index()
     {
 
-        $bills = ConveyanceBill::where(['employee_id'=> auth('employee')->user()->id])->orderBy('created_at','desc')->get();
+        $bills = ConveyanceBill::where(['employee_id'=> auth('employee')->user()->id])->orderBy('created_at','desc')->paginate(3);
         return view('employee.bill.index',compact('bills'));
     }
 

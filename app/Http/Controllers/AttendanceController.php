@@ -16,7 +16,7 @@ class AttendanceController extends Controller
      */
     public function index()
     {
-        $attendances = Attendance::where(['employee_id' => auth('employee')->user()->id])->orderBy('created_at', 'desc')->get();
+        $attendances = Attendance::where(['employee_id' => auth('employee')->user()->id])->orderBy('created_at', 'desc')->paginate(5);
         // reverse order of attendance
         return view('employee.attendance.index',compact('attendances'));
     }

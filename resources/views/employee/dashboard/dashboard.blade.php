@@ -9,12 +9,15 @@
     @foreach($notices as $notice)
     <form>
         <div class="row mb-3 shadow bg-white rounded-3 p-3 mx-2">
-            <i>Date: {{$notice->created_at->format('d/m/Y')}} </i><br>
+            Date: {{$notice->created_at->format('d/m/Y')}}<br><br>
             {!! $notice->message !!}
         </div>
     </form>
     <!-- End Form -->
     @endforeach
+    <div class="d-flex justify-content-center">
+        {{$notices->links()}}
+    </div>
     </div>
   </div>
 </div>

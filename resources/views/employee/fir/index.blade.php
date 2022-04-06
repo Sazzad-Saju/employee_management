@@ -48,6 +48,8 @@
     </form>
     <!-- End Form -->
     @endforeach
-
+    <div class="d-flex justify-content-center">
+        {{$reports->links()}}
+    </div>
   </div>
 @endsection

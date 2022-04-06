@@ -17,7 +17,7 @@ class LoanController extends Controller
      */
     public function index()
     {
-        $loans = Loan::where(['employee_id'=> auth('employee')->user()->id ])->orderBy('created_at', 'desc')->get();
+        $loans = Loan::where(['employee_id'=> auth('employee')->user()->id ])->orderBy('created_at', 'desc')->paginate(3);
         return view('employee.loan.index', compact('loans'));
     }
 

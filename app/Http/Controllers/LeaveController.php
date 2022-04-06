@@ -26,7 +26,7 @@ class LeaveController extends Controller
         // return auth('employee')->user()->leave->get();
         // return $leave;
         // $eid = auth('employee')->user()->id;
-        $leaves = Leave::where(['employee_id' => auth('employee')->user()->id])->orderBy('created_at', 'desc')->get();
+        $leaves = Leave::where(['employee_id' => auth('employee')->user()->id])->orderBy('created_at', 'desc')->paginate(3);
         // return Employee::with('employee')->get();
         return view('employee.leave.index',compact('leaves'));
     }
