@@ -16,7 +16,9 @@
         </div>
         <div class="col-10 col-sm-6 col-md-6 col-lg-7 col-xl-7">
             <div class="search-bar">
-                <input type="text" placeholder="Search Anything">
+                <form action="{{route('employee.dashboard.index')}}" method="GET">
+                    <input type="search" placeholder="Search Anything" name="query" value="{{old('query')}}">
+                </form>
                 <i class="fas fa-search"></i>
             </div>
         </div>
