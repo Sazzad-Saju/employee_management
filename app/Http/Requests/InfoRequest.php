@@ -32,6 +32,9 @@ class InfoRequest extends FormRequest
             'personal_email'=> "email|unique:employees,personal_email,{$id}",
             'office_email' => "required|email|unique:employees,office_email,{$id}",
             'office_phone' => ['regex:/^\+?(88)?0?1[3456789][0-9]{8}\b/'],
+            'fb_url'=>['nullable','regex:/(?:(?:http|https):\/\/)?(?:www.)?facebook.com\/(?:(?:\w)*#!\/)?(?:pages\/)?(?:[?\w\-]*\/)?(?:profile.php\?id=(?=\d.*))?([\w\-]*)?/'],
+            'li_url'=>'nullable',
+            'tt_url' => 'nullable',
             'dob'=> 'date|before:today',
             'gender'=> 'required|in:Male,Female',
             'blood_group_id' => 'required',
@@ -52,6 +55,10 @@ class InfoRequest extends FormRequest
             'profile_image' => 'image|mimes:jpeg,jpg,png',
             'certificate_image' => 'image|mimes:jpeg,jpg,png',
             'nid_image' => 'image|mimes:jpeg,jpg,png',
+            // security update
+            'pass' => 'sometimes|required|min:8',
+            'new_pass' => 'sometimes|required|min:8|different:pass',
+            'repeat_new' => 'sometimes|required|min:8|same:new_pass',
         ];
 
     }
@@ -61,6 +68,8 @@ class InfoRequest extends FormRequest
         'dob.before' => 'Invalid date',
         'salary.min' => 'Salary range started from 5k',
         'phone.regex','office_phone.regex','emergency_contact_phone.regex' => 'Must be a valid BD number',
+        'new_pass.different'=> 'New Password must be different',
+        'repeat_new.same' => 'This field have to match with new password',
         ];
     }
 }

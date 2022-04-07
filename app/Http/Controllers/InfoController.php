@@ -12,6 +12,7 @@ use App\Services\FileUploadService;
 use Illuminate\Support\Facades\DB;
 use Brian2694\Toastr\Facades\Toastr;
 // use Nette\Utils\Image;
+use Illuminate\Support\Facades\Hash;
 use Image;
 class InfoController extends Controller
 {
@@ -92,8 +93,9 @@ class InfoController extends Controller
         // }
 
         // dd($filename);
-        $data = $request->except(['profile_image','certificate_image','nid_image']);
+        $data = $request->except(['profile_image','certificate_image','nid_image','pass','new_pass','repeat_new']);
         Employee::findOrFail($id)->update($data);
+
         //image upload
         if($request->hasFile('profile_image')){
             if(auth('employee')->user()->profile_image){
@@ -146,6 +148,16 @@ class InfoController extends Controller
                      'model_info'=>auth('employee')->user(),
                  ]);
             }
+        }
+        // update security
+        // dd($request->input('repeat_new'));
+        $current_pass = $request->input('pass');
+        if(Hash::check($current_pass, auth()->user()->password)){
+            $newHashedPass = Hash::make($request->new_pass);
+            Employee::findOrFail($id)->update(['password' => $newHashedPass]);
+        }else{
+            Toastr::error('Invalid Credential!','Authentication Error');
+            return redirect()->back();
         }
         Toastr::success('Successfully updated profile', "Profile Update");
         return redirect()->route('employee.info.index');

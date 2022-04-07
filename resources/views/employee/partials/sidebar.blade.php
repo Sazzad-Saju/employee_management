@@ -7,9 +7,9 @@
             <div class="user-designation">{{auth('employee')->user()->designation->name}}</div>
             <div class="user-number">{{auth('employee')->user()->phone}}</div>
             <ul class="pt-1">
-                <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-                <li><a href="#"><i class="fab fa-linkedin"></i></a></li>
-                <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                <li><a href="{{auth('employee')->user()->fb_url}}"><i class="fab fa-facebook-f"></i></a></li>
+                <li><a href="{{auth('employee')->user()->li_url}}"><i class="fab fa-linkedin"></i></a></li>
+                <li><a href="{{auth('employee')->user()->tt_url}}"><i class="fab fa-twitter"></i></a></li>
             </ul>
         </div>
         <!-- All Links -->

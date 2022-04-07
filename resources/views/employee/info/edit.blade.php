@@ -66,6 +66,35 @@
             @enderror
           </div>
         </div>
+        {{-- SocialCorner --}}
+        <div class="col-xl-4 col-lg-6">
+            <div class="search-bar mb-3">
+              <input type="text" placeholder="Facebook URL" name="fb_url" value="{{$employee->fb_url}}">
+              <i class="fab fa-facebook-f"></i>
+              @error('fb_url')
+                  <small class="text-danger">{{ $message }}</small>
+              @enderror
+            </div>
+          </div>
+          <div class="col-xl-4 col-lg-6">
+            <div class="search-bar mb-3">
+              <input type="text" placeholder="Linkedin URL" name="li_url" value="{{$employee->li_url}}">
+              <i class="fab fa-linkedin-in"></i>
+              @error('li_url')
+                  <small class="text-danger">{{ $message }}</small>
+              @enderror
+            </div>
+          </div>
+          <div class="col-xl-4 col-lg-6">
+            <div class="search-bar mb-3">
+              <input type="text" placeholder="Twitter URL" name="tt_url" value="{{$employee->tt_url}}">
+              <i class="fab fa-twitter"></i>
+              @error('tt_url')
+                  <small class="text-danger">{{ $message }}</small>
+              @enderror
+            </div>
+          </div>
+          {{-- endOfSocialCorner --}}
         <div class="col-xl-4 col-lg-6">
           <div class="search-bar mb-3">
             <label for="dateOfBirth" class="d-block pb-2 ps-2">Date of Birth</label>
@@ -130,6 +159,41 @@
           </div>
         </div>
       </div>
+      {{-- update security --}}
+      <div class="row mb-5">
+        <div class="col-xl-12">
+          <h1 class="form-title">Update Security</h1>
+        </div>
+        <div class="col-xl-4 col-lg-6">
+          <div class="search-bar mb-3">
+            {{-- <input type="text" name="pass" placeholder="Current Password"> --}}
+            <input type="password" placeholder="Current Password" name="pass">
+            <i class="fa fa-key" aria-hidden="true"></i>
+              @error('pass')
+                  <small class="text-danger">{{ $message }}</small>
+              @enderror
+          </div>
+        </div>
+        <div class="col-xl-4 col-lg-6">
+            <div class="search-bar mb-3">
+              {{-- <input type="text" name="pass" placeholder="Current Password"> --}}
+              <input type="password" placeholder="New Password" name="new_pass">
+                @error('new_pass')
+                    <small class="text-danger">{{ $message }}</small>
+                @enderror
+            </div>
+          </div>
+          <div class="col-xl-4 col-lg-6">
+            <div class="search-bar mb-3">
+              {{-- <input type="text" name="pass" placeholder="Current Password"> --}}
+              <input type="password" placeholder="Repeat New Password" name="repeat_new">
+                @error('repeat_new')
+                    <small class="text-danger">{{ $message }}</small>
+                @enderror
+            </div>
+          </div>
+      </div>
+      {{-- end of update security --}}
       <div class="row mb-5">
         <div class="col-xl-12">
           <h1 class="form-title">Important Info</h1>
