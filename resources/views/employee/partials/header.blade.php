@@ -5,6 +5,10 @@
     if ($hrs >= 12) $msg = "Good afternoon";    // After 12pm
     if ($hrs >= 17) $msg = "Good evening";      // After 5pm
     if ($hrs >= 22) $msg = "Go to bed!";        // After 10pm
+
+    // yesterday,today notification
+    $today = Carbon\Carbon::now()->toDateString();
+    $yesterday = Carbon\Carbon::yesterday()->toDateString();
 ?>
 <div class="top-user-info">
     <div class="row align-items-center">
@@ -30,13 +34,27 @@
 
                         <i class="fas fa-bell dropdown-toggle" role="button" id="dropdownMenuButton" data-offset="5,5" data-toggle="dropdown" aria-expanded="false"></i>
                         <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right" aria-labelledby="dropdownMenuButton">
-                            <span class="dropdown-header text-center pb-0">15 Notifications</span>
+                            {{-- @dd(auth('employee')->user()->notifications) --}}
+                            {{-- @foreach(auth('employee')->user()->notifications as $notification) --}}
+                            {{-- <li> <a href="#"> {!!$notification["data"]["data"]!!} </a></li> --}}
+                            {{-- <li> <a href="#"> {!!$notification!!} </a></li> --}}
+                            {{-- @endforeach --}}
+                            <span class="dropdown-header text-center pb-0">New Notification: {{auth('employee')->user()->notifications->count()}}</span>
+                            @foreach(auth('employee')->user()->notifications as $notification)
                             <div class="dropdown-divider"></div>
-                            <a href="#" class="dropdown-item">
-                                <i class="fas fa-envelope mr-2"></i> 4 new messages
-                                <span class="float-right text-muted text-sm">3 mins</span>
+                            <a href="#" class="dropdown-item" style="word-wrap: break-word;">
+                                <i class="fas fa-envelope mr-2"></i> {!! substr($notification["data"]["data"],0,25).'...' !!}<br>
+                                {{-- {{$notification['created_at']->format('Y-m-d')}} --}}
+                                @if($notification['created_at']->format('Y-m-d') == $today)
+                                    <span class="text-muted text-sm">{{'today at '.$notification['created_at']->format('H:i A')}}</span>
+                                @elseif($notification['created_at']->format('Y-m-d') == $yesterday)
+                                    <span class="text-muted text-sm">{{'yesterday at '.$notification['created_at']->format('H:i A')}}</span>
+                                @else
+                                    <span class="text-muted text-sm">{{$notification['created_at']->format('d-F')}}</span>
+                                @endif
                             </a>
-                            <div class="dropdown-divider"></div>
+                            @endforeach
+                            {{-- <div class="dropdown-divider"></div>
                             <a href="#" class="dropdown-item">
                                 <i class="fas fa-users mr-2"></i> 8 friend requests
                                 <span class="float-right text-muted text-sm">12 hours</span>
@@ -45,7 +63,7 @@
                             <a href="#" class="dropdown-item">
                                 <i class="fas fa-file mr-2"></i> 3 new reports
                                 <span class="float-right text-muted text-sm">2 days</span>
-                            </a>
+                            </a> --}}
                             <div class="dropdown-divider"></div>
                             <a href="#" class="dropdown-item dropdown-footer text-center pb-2 pt-0">See All Notifications</a>
                         </div>

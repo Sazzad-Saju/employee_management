@@ -10,6 +10,7 @@ use App\Http\Controllers\LeaveController;
 use App\Http\Controllers\LoanController;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Models\Employee;
+use App\Notifications\LatestNotice;
 
 /*
 |--------------------------------------------------------------------------
