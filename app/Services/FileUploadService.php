@@ -5,6 +5,7 @@ namespace App\Services;
 use App\Http\Middleware\Employee;
 use Illuminate\Support\Str;
 
+/* custom image upload process */
 class FileUploadService
 {
 

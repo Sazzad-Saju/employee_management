@@ -13,11 +13,13 @@ class Leave extends Model
 
     ];
 
+    /* Leave-Employee relation */
     public function employee()
     {
         return $this->belongsTo(Employee::class,'recommend_employee_id');
     }
 
+    /* Leave-LeaveType relation */
     public function leaveType()
     {
         return $this->belongsTo(LeaveType::class);

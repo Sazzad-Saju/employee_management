@@ -27,6 +27,8 @@ class LatestNotice extends Notification
      * @param  mixed  $notifiable
      * @return array
      */
+
+    /* Here only returned the db */
     public function via($notifiable)
     {
         return ['database'];
@@ -55,6 +57,7 @@ class LatestNotice extends Notification
     public function toArray($notifiable)
     {
         return [
+            // test
             // 'data' => 'This is my first notification',
         ];
     }

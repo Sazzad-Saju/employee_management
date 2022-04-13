@@ -20,14 +20,12 @@ class LeaveController extends Controller
      */
     public function index()
     {
+        /*
         // $leaves = Leave::all();  //all leave
         // $leaves = Leave::with('employee')->get(); all leave with employee info
-        // $leave = Leave::with('employee')->findOrFail(1);
-        // return auth('employee')->user()->leave->get();
-        // return $leave;
-        // $eid = auth('employee')->user()->id;
+        gets all leaves where authenticated employee id matches with employee_id column of leave
+        */
         $leaves = Leave::where(['employee_id' => auth('employee')->user()->id])->orderBy('created_at', 'desc')->paginate(3);
-        // return Employee::with('employee')->get();
         return view('employee.leave.index',compact('leaves'));
     }
 
@@ -38,6 +36,7 @@ class LeaveController extends Controller
      */
     public function create()
     {
+        /* send all employee's id,name info */
         $employees = Employee::select(['id', 'name'])->get();
         return view('employee.leave.create',compact('employees'));
     }
@@ -50,10 +49,12 @@ class LeaveController extends Controller
      */
     public function store(LeaveRequest $request)
     {
+        /* gets working duration in terms of hours. Here 9-hour/day */
         $start_date = Carbon::parse($request->start_date);
         $end_date = Carbon::parse($request->end_date);
         $working_duration = ($end_date->diffInDays($start_date)+1)*9;
 
+        /* organize data to store: format date, calculate duration, gets employee_id, status set to pending */
         $data = $request->only(['leave_type_id', 'recommend_employee_id',  'reason',  'submission_type']);
         $data['employee_id'] = auth('employee')->user()->id;
         $data['start_date'] = $start_date->format('Y/m/d');

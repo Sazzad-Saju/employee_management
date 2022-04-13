@@ -34,7 +34,6 @@ class LeaveRequest extends FormRequest
             'end_date' => 'required|date|after_or_equal:start_date',
             'recommend_employee_id'=> 'required',
             'reason' => 'required',
-
         ];
     }
 }

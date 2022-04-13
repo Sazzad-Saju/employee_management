@@ -491,6 +491,20 @@ body {
     margin-bottom: 15px;
 }
 
+#email,
+#password {
+    background-color: white;
+}
+
+#myVideo {
+    position: absolute;
+    opacity: 0.8;
+    right: 0;
+    bottom: 0;
+    min-width: 100%;
+    min-height: 100%;
+}
+
 @import url('https://fonts.googleapis.com/css2?family=Black+Ops+One&family=Lobster&family=Satisfy&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
 .bg-cover {
@@ -536,46 +550,16 @@ body {
     background: #fff;
 }
 
-.employee-view ul {
+loader ul {
     margin: 0;
     padding: 0;
 }
 
-.employee-view ul li {
+loader ul li {
     display: inline-block;
     list-style: none;
     padding-right: 5px;
     /* color: #bfbfbf; */
     color: #5a5a5a;
     font-weight: 100;
-}
-
-
-/* Newly added CSS by Sazzad-Saju */
-
-#email,
-#password {
-    background-color: white;
-}
-
-#myVideo {
-    position: absolute;
-    opacity: 0.8;
-    right: 0;
-    bottom: 0;
-    min-width: 100%;
-    min-height: 100%;
-}
-
-.propic {
-    border-radius: 50%;
-    border: 2px solid gray;
-}
-
-.hide {
-    display: none;
-}
-
-.red-border {
-    border: 1px solid #ff0e0e;
 }

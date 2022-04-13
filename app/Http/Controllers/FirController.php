@@ -18,6 +18,7 @@ class FirController extends Controller
      */
     public function index()
     {
+        /* gets all report created by the authenticated employee */
         $reports = Report::where(['created_by'=>auth('employee')->user()->id])->orderBy('created_at','desc')->paginate(3);
         return view('employee.fir.index',compact('reports'));
     }
@@ -29,6 +30,7 @@ class FirController extends Controller
      */
     public function create()
     {
+        /* gets all employee list except authenticated employee himself*/
         $employees = Employee::select(['id', 'name'])->whereNotIn('id', [auth('employee')->user()->id])->get();
         return view('employee.fir.create',compact('employees'));
     }
@@ -41,7 +43,8 @@ class FirController extends Controller
      */
     public function store(ReportRequest $request)
     {
-        $data = $request->only(['level', 'employee_id', 'date', 'description']);
+        $data = $request->except('_token');
+        // date format store in y/m/d format and show in d/m/y format
         $data['date'] = date('Y/m/d',strtotime($data['date']));
         $data['created_by'] = auth('employee')->user()->id;
         $Employee = Employee::where('id',$data['employee_id'])->first();

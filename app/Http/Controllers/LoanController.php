@@ -17,6 +17,7 @@ class LoanController extends Controller
      */
     public function index()
     {
+        /* gets all loan request of authenticated employee */
         $loans = Loan::where(['employee_id'=> auth('employee')->user()->id ])->orderBy('created_at', 'desc')->paginate(3);
         return view('employee.loan.index', compact('loans'));
     }
@@ -39,20 +40,14 @@ class LoanController extends Controller
      */
     public function store(LoanRequest $request)
     {
-        // return $request->all();
-        // return $request->amount;
-        // $newLoan = new Loan;
-        // $newLoan->employee_id = auth('employee')->user()->id;
-        // $newLoan->issue_date = Carbon::now();
-        // $newLoan->amount = $request->amount;
-        // $newLoan->reason = $request->reason;
-        // $newLoan->save();
-        $loan = Loan::create([
+        /* create a loan of the authenticated user */
+        $data = [
             'employee_id'=>auth('employee')->user()->id,
             'issue_date'=> Carbon::now(),
             'amount' => $request->amount,
             'reason' => $request->reason,
-        ]);
+        ];
+        Loan::create($data);
         Toastr::success('Successfully applied for a loan', "Loan Request");
         return redirect()->route('employee.loan.index');
     }

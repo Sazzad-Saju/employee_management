@@ -40,6 +40,8 @@ return [
             'driver' => 'session',
             'provider' => 'users',
         ],
+
+        /* newly created employee guard */
         'employee' => [
             'driver' => 'session',
             'provider' => 'employees',
@@ -74,6 +76,8 @@ return [
             'driver' => 'eloquent',
             'model' => App\Models\User::class,
         ],
+
+        /* newly created employee provider */
         'employees' => [
             'driver' => 'eloquent',
             'model' => App\Models\Employee::class,

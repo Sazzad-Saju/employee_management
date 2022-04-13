@@ -11,6 +11,7 @@ class Attendance extends Model
     use HasFactory, SoftDeletes;
     protected $guarded=[];
 
+    /* Attendance-Employee relation */
     public function employee(){
         return $this->belongsTo(Employee::class);
     }

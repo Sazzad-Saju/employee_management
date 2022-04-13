@@ -23,7 +23,6 @@ class InfoController extends Controller
      */
     public function index()
     {
-        // return 'ok';
         return view('employee.info.index');
     }
 
@@ -67,6 +66,7 @@ class InfoController extends Controller
      */
     public function edit($id)
     {
+        // prefill employee-info-edit with associated data
         $employee = Employee::findOrFail(auth('employee')->user()->id);
         $bloodGroups = BloodGroup::select(['id', 'name'])->get();
         $departments = Department::select(['id', 'name'])->get();
@@ -84,81 +84,46 @@ class InfoController extends Controller
      */
     public function update(InfoRequest $request, $id, FileUploadService $fileUploadService)
     {
-        // profile_image update: with img-intervention package
-        // if($request->hasFile('profile_image')){
-        //     $profile_image = $request->file('profile_image');
-        //     $filename = 'storage/img/profile_image/'.time().'.'.$profile_image->getClientOriginalExtension();
-        //     Image::make($profile_image)->resize(300,300)->save($filename);
-        //     Employee::findOrFail($id)->update(['profile_image' => $filename]);
-        // }
+        /* Image upload section with img-intervention package */
+        if($request->hasFile('profile_image')){
+            $profile_image = $request->file('profile_image');
+            $filename = 'storage/img/profile_image/'.time().'.'.$profile_image->getClientOriginalExtension();
+            Image::make($profile_image)->save($filename);
+            Employee::findOrFail($id)->update(['profile_image' => $filename]);
+        }
+        if($request->hasFile('certificate_image')){
+            $certificate_image = $request->file('certificate_image');
+            $filename = 'storage/img/certificate_image/'.time().'.'.$certificate_image->getClientOriginalExtension();
+            Image::make($certificate_image)->save($filename);
+            Employee::findOrFail($id)->update(['certificate_image' => $filename]);
+        }
+        if($request->hasFile('nid_image')){
+            $nid_image = $request->file('nid_image');
+            $filename = 'storage/img/nid_image/'.time().'.'.$nid_image->getClientOriginalExtension();
+            Image::make($nid_image)->save($filename);
+            Employee::findOrFail($id)->update(['nid_image' => $filename]);
+        }
+        /* end image upload section */
 
-        // dd($filename);
+        /* update or rewrite most of the data from employee edit */
         $data = $request->except(['profile_image','certificate_image','nid_image','pass','new_pass','repeat_new']);
         Employee::findOrFail($id)->update($data);
 
-        //image upload
-        if($request->hasFile('profile_image')){
-            if(auth('employee')->user()->profile_image){
-                $file_array = explode('/', auth('employee')->user()->profile_image);
-                $fileUploadService->updateFile([
-                     'existing_file'=>end($file_array),
-                     'storage_folder'=>'employee/profile_pic',
-                     'request_file_name'=>'profile_image',
-                     'model_info'=>auth('employee')->user(),
-                 ]);
-            }else{
-                 $fileUploadService->addFile([
-                     'storage_folder'=>'employee/profile_pic',
-                     'request_file_name'=>'profile_image',
-                     'model_info'=>auth('employee')->user(),
-                 ]);
-            }
-        }
-        if($request->hasFile('certificate_image')){
-            // return 'ok';
-            if(auth('employee')->user()->certificate_image){
-                $file_array = explode('/', auth('employee')->user()->certificate_image);
-                  $fileUploadService->updateFile([
-                     'existing_file'=>end($file_array),
-                     'storage_folder'=>'employee/certificate_image',
-                     'request_file_name'=>'certificate_image',
-                     'model_info'=>auth('employee')->user(),
-                 ]);
-            }else{
-                 $fileUploadService->addFile([
-                     'storage_folder'=>'employee/certificate_image',
-                     'request_file_name'=>'certificate_image',
-                     'model_info'=>auth('employee')->user(),
-                 ]);
-            }
-        }
-        if($request->hasFile('nid_image')){
-            if(auth('employee')->user()->nid_image){
-                $file_array = explode('/', auth('employee')->user()->nid_image);
-                  $fileUploadService->updateFile([
-                     'existing_file'=>end($file_array),
-                     'storage_folder'=>'employee/nid_image',
-                     'request_file_name'=>'nid_image',
-                     'model_info'=>auth('employee')->user(),
-                 ]);
-            }else{
-                 $fileUploadService->addFile([
-                     'storage_folder'=>'employee/nid_image',
-                     'request_file_name'=>'nid_image',
-                     'model_info'=>auth('employee')->user(),
-                 ]);
-            }
-        }
-        // update security
-        // dd($request->input('repeat_new'));
+        /* update security: change current password */
         $current_pass = $request->input('pass');
-        if(Hash::check($current_pass, auth()->user()->password)){
-            $newHashedPass = Hash::make($request->new_pass);
-            Employee::findOrFail($id)->update(['password' => $newHashedPass]);
-        }else{
-            Toastr::error('Invalid Credential!','Authentication Error');
-            return redirect()->back();
+        $new_pass = $request->input('new_pass');
+        if($current_pass != null && $new_pass != null){
+            if(Hash::check($current_pass, auth()->user()->password)){
+                $newHashedPass = Hash::make($new_pass);
+                Employee::findOrFail($id)->update(['password' => $newHashedPass]);
+            }else{
+                Toastr::error('Invalid Credential!','Authentication Error');
+                return redirect()->back();
+            }
         }
+        /* end update security */
+
+        /* update or unchanged gives successful message */
         Toastr::success('Successfully updated profile', "Profile Update");
         return redirect()->route('employee.info.index');
 

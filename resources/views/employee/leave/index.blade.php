@@ -2,6 +2,7 @@
 @section('title','Leave')
 @section('content')
 <div class="main">
+    {{-- leave button section --}}
     <div class="row">
       <div class="col-md-12">
         <div class="flexitembox">
@@ -14,8 +15,10 @@
         </div>
       </div>
     </div>
+    {{-- end leave button section --}}
 
     <!-- Start Form -->
+    {{-- prints all leaves --}}
     @foreach($leaves as $leave)
     <form>
       <div class="row mb-3 shadow bg-white rounded-3 p-3 mx-2">
@@ -40,9 +43,7 @@
         <div class="col-xl-7 col-lg-12 employee-view mb-3">
           <ul>
             <li><i class="far fa-user mr-1"></i>Recommend Employee:</li>
-            {{-- <li class="">{{App\Models\Employee::find($leave['recommend_employee_id'])->name}}</li>  this also work --}}
             <li class="">{{ $leave->employee->name }}</li>
-            <!-- different recommanded employee, need inside of loop -->
           </ul>
         </div>
         <div class="col-xl-5 col-lg-12 employee-view mb-3">
@@ -67,6 +68,9 @@
     </form>
     <!-- End Form -->
     @endforeach
+    {{-- end prints all leaves --}}
+
+    {{-- paginate leaves section --}}
     <div class="d-flex justify-content-center">
         {{$leaves->links()}}
     </div>

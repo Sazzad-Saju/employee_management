@@ -7,10 +7,10 @@
         <div class="title">Employee Information</div>
       </div>
     </div>
-    <!-- Start Form -->
     <form method="POST" action="{{route('employee.info.update',auth('employee')->user()->id)}}" enctype="multipart/form-data">
         @csrf
         @method('PUT')
+        {{-- Personal Info section--}}
       <div class="row mb-5">
         <div class="col-xl-12">
           <h1 class="form-title">Personal Info</h1>
@@ -24,12 +24,16 @@
             @enderror
           </div>
         </div>
-        {{-- <div class="col-xl-4 col-lg-6">
+
+        {{-- this part is required when username is applied --}}
+        {{--<div class="col-xl-4 col-lg-6">
           <div class="search-bar mb-3">
             <input type="text" id="lastName" placeholder="Last Name">
             <i class="far fa-user"></i>
           </div>
         </div> --}}
+        {{-- end username --}}
+
         <div class="col-xl-4 col-lg-6">
           <div class="search-bar mb-3">
             <input type="text" id="phoneNumber" placeholder="Phone Number" name="phone" value="{{$employee->phone}}">
@@ -66,7 +70,8 @@
             @enderror
           </div>
         </div>
-        {{-- SocialCorner --}}
+
+        {{-- SocialCorner section--}}
         <div class="col-xl-4 col-lg-6">
             <div class="search-bar mb-3">
               <input type="text" placeholder="Facebook URL" name="fb_url" value="{{$employee->fb_url}}">
@@ -75,8 +80,8 @@
                   <small class="text-danger">{{ $message }}</small>
               @enderror
             </div>
-          </div>
-          <div class="col-xl-4 col-lg-6">
+        </div>
+        <div class="col-xl-4 col-lg-6">
             <div class="search-bar mb-3">
               <input type="text" placeholder="Linkedin URL" name="li_url" value="{{$employee->li_url}}">
               <i class="fab fa-linkedin-in"></i>
@@ -84,8 +89,8 @@
                   <small class="text-danger">{{ $message }}</small>
               @enderror
             </div>
-          </div>
-          <div class="col-xl-4 col-lg-6">
+        </div>
+        <div class="col-xl-4 col-lg-6">
             <div class="search-bar mb-3">
               <input type="text" placeholder="Twitter URL" name="tt_url" value="{{$employee->tt_url}}">
               <i class="fab fa-twitter"></i>
@@ -93,14 +98,13 @@
                   <small class="text-danger">{{ $message }}</small>
               @enderror
             </div>
-          </div>
-          {{-- endOfSocialCorner --}}
+        </div>
+        {{-- endOfSocialCorner --}}
+
         <div class="col-xl-4 col-lg-6">
           <div class="search-bar mb-3">
             <label for="dateOfBirth" class="d-block pb-2 ps-2">Date of Birth</label>
-            {{-- <input type="date" id="dateOfBirth" placeholder="Date of Birth" value="{{date('d/m/Y',strtotime($employee->dob))}}"> --}}
             <input type="date" id="dateOfBirth" placeholder="Date of Birth" name="dob" value="{{$employee->dob}}">
-            {{-- <input type="text" class="singleDateRange value" id="dateOfBirth" placeholder="Date of Birth" value="18-11-1994"> --}}
             @error('dob')
                 <small class="text-danger">{{ $message }}</small>
             @enderror
@@ -155,18 +159,19 @@
             @error('profile_image')
                 <small class="text-danger">{{ $message }}</small>
             @enderror
-            <img src="{{asset('storage/'.$employee->profile_image)}}" width="180" class="img-fluid my-2 ml-3"  alt="avatar">
+            <img src="{{asset($employee->profile_image)}}" width="180" class="img-fluid my-2 ml-3"  alt="avatar">
           </div>
         </div>
       </div>
-      {{-- update security --}}
+      {{-- Ends Personal Info --}}
+
+      {{-- Update Security section--}}
       <div class="row mb-5">
         <div class="col-xl-12">
           <h1 class="form-title">Update Security</h1>
         </div>
         <div class="col-xl-4 col-lg-6">
           <div class="search-bar mb-3">
-            {{-- <input type="text" name="pass" placeholder="Current Password"> --}}
             <input type="password" placeholder="Current Password" name="pass">
             <i class="fa fa-key" aria-hidden="true"></i>
               @error('pass')
@@ -176,7 +181,6 @@
         </div>
         <div class="col-xl-4 col-lg-6">
             <div class="search-bar mb-3">
-              {{-- <input type="text" name="pass" placeholder="Current Password"> --}}
               <input type="password" placeholder="New Password" name="new_pass">
                 @error('new_pass')
                     <small class="text-danger">{{ $message }}</small>
@@ -185,7 +189,6 @@
           </div>
           <div class="col-xl-4 col-lg-6">
             <div class="search-bar mb-3">
-              {{-- <input type="text" name="pass" placeholder="Current Password"> --}}
               <input type="password" placeholder="Repeat New Password" name="repeat_new">
                 @error('repeat_new')
                     <small class="text-danger">{{ $message }}</small>
@@ -194,6 +197,8 @@
           </div>
       </div>
       {{-- end of update security --}}
+
+      {{-- important info section --}}
       <div class="row mb-5">
         <div class="col-xl-12">
           <h1 class="form-title">Important Info</h1>
@@ -218,12 +223,6 @@
                 @foreach($designations as $designation)
                     <option value="{{$designation->id}}" {{$employee->designation_id == $designation->id ? 'selected': ''}}>{{$designation->name}}</option>
                 @endforeach
-
-                {{-- <option value="1">Technical Officer</option>
-                <option value="2">Graphic Design</option>
-                <option value="3">Software Engineer</option>
-                <option value="4">Network Engineer</option>
-                <option value="5">SEO Expert</option> --}}
               </select>
             </div>
           </div>
@@ -249,6 +248,8 @@
             <input type="date" id="leavingDate" name="quit_date" value="{{$employee->quit_date}}">
           </div>
         </div>
+
+        {{-- employee status disabled --}}
         <div class="col-xl-4 col-lg-6">
           <div class="mb-3">
             <label class="d-block pb-3">Employee Status</label>
@@ -262,18 +263,20 @@
             </div>
           </div>
         </div>
+        {{-- end employee status --}}
+
         <div class="col-xl-4 col-lg-6">
           <div class="search-bar filetype mb-3">
             <label for="profilepicture" class="d-block pb-2 ps-2">Certificate Image</label>
             <input type="file" name="certificate_image">
-            <img src="{{asset('/storage'.$employee->certificate_image)}}" width="180" class="img-fluid my-2 ms-3"  alt="avatar">
+            <img src="{{asset($employee->certificate_image)}}" width="180" class="img-fluid my-2 ms-3"  alt="avatar">
           </div>
         </div>
         <div class="col-xl-4 col-lg-6">
           <div class="search-bar filetype mb-3">
             <label for="profilepicture" class="d-block pb-2 ps-2">NID Image</label>
             <input type="file" name="nid_image">
-            <img src="{{asset('/storage'.$employee->nid_image)}}" width="180" class="img-fluid my-2 ms-3"  alt="avatar">
+            <img src="{{asset($employee->nid_image)}}" width="180" class="img-fluid my-2 ms-3"  alt="avatar">
           </div>
         </div>
         <div class="col-xl-4 col-lg-12">
@@ -286,6 +289,9 @@
           </div>
         </div>
       </div>
+      {{-- end important info --}}
+
+      {{-- emergency info section --}}
       <div class="row mb-5">
         <div class="col-xl-12">
           <h1 class="form-title">Emergency Info</h1>
@@ -320,17 +326,12 @@
           </div>
         </div>
       </div>
+      {{-- end emergency info --}}
       <div class="row">
         <div class="col-md-12">
           <button type="submit" class="btn btn-sm defaultBtn float-right">Submit</button>
         </div>
       </div>
-    @if ($errors->any())
-        @foreach ($errors->all() as $error)
-                {{ Toastr()->info($error, "Validation Error")}}
-        @endforeach
-    @endif
     </form>
-    <!-- End Form -->
   </div>
 @endsection

@@ -2,7 +2,7 @@
     <div class="user-info mb-3" id="sidebar">
         <!-- Profile Image Card  -->
         <div class="image-card">
-            <img src="{{asset('storage/'.auth('employee')->user()->profile_image)}}" alt="user-img" class="img-fluid pb-2">
+            <img src="{{asset(auth('employee')->user()->profile_image)}}" alt="user-img" class="img-fluid pb-2">
             <div class="user-name">{{auth('employee')->user()->name}}</div>
             <div class="user-designation">{{auth('employee')->user()->designation->name}}</div>
             <div class="user-number">{{auth('employee')->user()->phone}}</div>
@@ -17,9 +17,6 @@
             <a href="{{route('employee.dashboard.index')}}" class="list-group-item list-group-item-action {{request()->segment(1)==='dashboard'?'active':''}}" aria-current="true">
                 <i class="fas fa-tachometer-alt"></i> Dashboard
             </a>
-            {{-- <a href="{{route('employee.dashboard.index')}}" class="list-group-item list-group-item-action" aria-current="true">
-                <i class="fas fa-tachometer-alt"></i> Dashboard
-            </a> --}}
             <a href="{{route('employee.attendance.index')}}" class="list-group-item list-group-item-action {{request()->segment(1)==='attendance'?'active':''}}"><i class="fas fa-concierge-bell"></i> Attendance</a>
             <a href="{{route('employee.leave.index')}}" class="list-group-item list-group-item-action {{request()->segment(1)==='leave'?'active':''}}"><i class="fas fa-plane-departure"></i> Leave</a>
             <a href="{{route('employee.loan.index')}}" class="list-group-item list-group-item-action {{request()->segment(1)==='loan'?'active':''}}"><i class="fas fa-landmark"></i> Loan</a>
@@ -28,5 +25,6 @@
             <a href="{{route('employee.bill.index')}}" class="list-group-item list-group-item-action {{request()->segment(1)==='bill'?'active':''}}"><i class="fas fa-hand-holding-usd"></i> Conveyance bill</a>
             <a href="{{route('employee.logout.destroy')}}" class="list-group-item list-group-item-action {{request()->segment(1)==='destroy'?'active':''}}"><i class="fas fa-sign-out-alt"></i> Logout</a>
         </div>
+        {{-- end all links --}}
     </div>
 </div>

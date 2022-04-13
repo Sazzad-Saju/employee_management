@@ -14,6 +14,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
+        /* gets 10 random user */
         User::factory(10)->create();
     }
 }

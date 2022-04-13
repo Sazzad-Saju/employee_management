@@ -27,6 +27,7 @@ class InfoRequest extends FormRequest
 
         $id =auth('employee')->user()->id;
         return [
+            /* Personal Info validation */
             'name'=>'required|string',
             'phone'=> ['required', 'regex:/^\+?(88)?0?1[3456789][0-9]{8}\b/'],
             'personal_email'=> "email|unique:employees,personal_email,{$id}",
@@ -40,28 +41,34 @@ class InfoRequest extends FormRequest
             'blood_group_id' => 'required',
             'present_address' => 'required',
             'permanent_address' => 'required',
+            'profile_image' => 'image|mimes:jpeg,jpg,png',
+
+            /* Important Info validation */
             'department_id' => 'required',
             'designation_id' => 'required',
             'salary' => 'numeric|min:5000',
             'join_date' => 'date',
-            'quit_date' => 'nullable|date|after: join_date', //nullable
+            'quit_date' => 'nullable|date|after: join_date',
             'is_current_employee' => 'sometimes|in: 1:0',
             'is_provision_period' => 'sometimes|in:1:0',
+            'certificate_image' => 'image|mimes:jpeg,jpg,png',
+            'nid_image' => 'image|mimes:jpeg,jpg,png',
             'nid_number' => ['numeric','required','regex:/(?:\d{17}|\d{13}|\d{10})/'],
+
+            // Emergency Info validation
             'emergency_contact_person' => 'required',
             'emergency_contact_phone' => ['regex:/^\+?(88)?0?1[3456789][0-9]{8}\b/'],
             'emergency_contact_relation' => 'string',
             'emergency_contact_address' => 'string',
-            'profile_image' => 'image|mimes:jpeg,jpg,png',
-            'certificate_image' => 'image|mimes:jpeg,jpg,png',
-            'nid_image' => 'image|mimes:jpeg,jpg,png',
-            // security update
-            'pass' => 'sometimes|required|min:8',
-            'new_pass' => 'sometimes|required|min:8|different:pass',
-            'repeat_new' => 'sometimes|required|min:8|same:new_pass',
+
+            // security update validation
+            'pass' => 'sometimes|nullable|min:8',
+            'new_pass' => 'sometimes|nullable|min:8|different:pass|same:repeat_new',
+            'repeat_new' => 'sometimes|nullable|min:8|same:new_pass',
         ];
 
     }
+    // custom validation error message
     public function messages(){
         return[
         'name.required'=> 'Must have a name!',
@@ -70,6 +77,7 @@ class InfoRequest extends FormRequest
         'phone.regex','office_phone.regex','emergency_contact_phone.regex' => 'Must be a valid BD number',
         'new_pass.different'=> 'New Password must be different',
         'repeat_new.same' => 'This field have to match with new password',
+        'new_pass.same' => 'New password must be confirmed',
         ];
     }
 }

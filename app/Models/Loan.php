@@ -11,6 +11,7 @@ class Loan extends Model
     use HasFactory, SoftDeletes;
     protected $guarded = [];
 
+    /* Loan-Employee relation */
     public function employee(){
         return $this->belongsTo(Employee::class, 'employee_id');
     }

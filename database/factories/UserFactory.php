@@ -21,6 +21,8 @@ class UserFactory extends Factory
      *
      * @return array
      */
+
+    /* Facker to generate random users */
     public function definition()
     {
         return [
@@ -28,10 +30,7 @@ class UserFactory extends Factory
             'email' => $this->faker->unique()->safeEmail,
             'email_verified_at' => now(),
             'phone'=> $this->faker->unique()->phoneNumber,
-            // 'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
-            // 'password'=>bcrypt('123qwe'),
-            'password' => '$2y$10$st4/twU5xm1t42UEcYhuKeKzlw66lH5Noduu7P.JxFzPUqbRBaoWW',
-            // 'password' => bcrypt('123qwe'),
+            'password' => '$2y$10$st4/twU5xm1t42UEcYhuKeKzlw66lH5Noduu7P.JxFzPUqbRBaoWW', //123qwe
             'remember_token' => Str::random(10),
         ];
     }

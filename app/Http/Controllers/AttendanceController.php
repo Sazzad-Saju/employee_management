@@ -16,8 +16,9 @@ class AttendanceController extends Controller
      */
     public function index()
     {
+        /* gets all attendance of authenticated employee from attendance table based on employee_id
+        and shows in reverse order also paginate by 5 attendance on each page */
         $attendances = Attendance::where(['employee_id' => auth('employee')->user()->id])->orderBy('created_at', 'desc')->paginate(5);
-        // reverse order of attendance
         return view('employee.attendance.index',compact('attendances'));
     }
 
@@ -28,6 +29,7 @@ class AttendanceController extends Controller
      */
     public function create()
     {
+        /*  */
         $date = Carbon::now();
         return view('employee.attendance.create', compact('date'));
     }

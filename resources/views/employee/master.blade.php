@@ -1,68 +1,53 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <!-- Required meta tags -->
+
+<head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <!--CSS-->
+    <!--Include CSS-->
     @include('employee.partials.styles')
     @stack('styles')
+    {{-- dynamic title --}}
     <title>NetCoden - @yield('title')</title>
-  </head>
-  <body>
+</head>
+
+<body>
     <div class="user-panel">
-      <div class="bg-cover"></div>
+        <div class="bg-cover"></div>
         <div class="container-md">
             <div class="row">
-              <!-- ============== Start Left Sidebar =================-->
-              @include('employee.partials.sidebar')
-              <!-- ============== End Left Sidebar =================-->
-
-              <!-- ============== Start Right Section =================-->
-              <div class="col-md-8">
-                <div class="loader-wrapper" id="loader-wrapperX">
-                    <span class="loader"><span class="loader-inner"></span></span>
+                {{-- fixed sidebar --}}
+                @include('employee.partials.sidebar')
+                {{-- right section --}}
+                <div class="col-md-8">
+                    {{-- applied loader before content --}}
+                    <div class="loader-wrapper" id="loader-wrapperX">
+                        <span class="loader"><span class="loader-inner"></span></span>
+                    </div>
+                    <div class="user-details">
+                        {{-- fixed header --}}
+                        @include('employee.partials.header')
+                        {{-- dynamic content --}}
+                        @yield('content')
+                    </div>
                 </div>
-                <div class="user-details">
-
-                    <!-- Start Top Section -->
-                    @include('employee.partials.header')
-                    <!-- End Top Section -->
-
-                    <!-- Start Main Section -->
-                    @yield('content')
-
-                    <!-- End Main Section -->
-                </div>
-            </div>
-              <!-- ============== End Right Section =================-->
+                {{-- end right section --}}
             </div>
         </div>
     </div>
 
-   <!-- jQuery and Bootstrap Bundle (includes Popper) -->
-  @include('employee.partials.scripts')
-  @stack('scripts')
-  {{-- <div class="loader-wrapper" id="loader-wrapperX"> --}}
-    {{-- <span class="loader"><span class="loader-inner"></span></span> --}}
-  {{-- </div> --}}
-  @yield('ckeditor')
+    <!-- jQuery and Bootstrap Bundle (includes Popper) -->
+    @include('employee.partials.scripts')
+    @stack('scripts')
+    {{-- linked ckeditor to use on any page --}}
+    @yield('ckeditor')
 
-  </body>
-  <script>
-    // $( "#loader-wrapperX" ).load(function() {
-    //     $('.loader').fadeOut(250);
-    // });
-    $(window).on("load",function(){
-      $(".loader-wrapper").fadeOut("slow");
+</body>
+<script>
+    /* jquery method for loader applied on each dynamic content */
+    $(window).on("load", function() {
+        $(".loader-wrapper").fadeOut("slow");
     });
-    // setTimeout(function () {
-    //   document.getElementById("loader-wrapperX").style = "display: none";
-    // }, 700);
-    // $(document).ready( function() {
-    //     $('.loader-wrapper').delay(500).fadeOut();
-    // });
+</script>
 
-  </script>
 </html>

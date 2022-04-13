@@ -42,39 +42,9 @@
             </div>
           </div>
         </div>
-        {{--<div class="col-xl-12 col-lg-12">
-          <div class="textareafield mb-3">
-            <textarea placeholder="Reason" rows="5"></textarea>
-          </div>
-        </div>
-        <div class="col-xl-6 col-lg-6">
-          <div class="search-bar mb-3">
-            <div class="selectgroup">
-              <select>
-                <option value="">Choose Recommend Employee</option>
-                <option value="1">All Helal</option>
-                <option value="2">Mehedi Hassan</option>
-                <option value="3">Nafiul Islam</option>
-                <option value="4">Sebgatullah Arnob</option>
-                <option value="5">Rabbial Anower</option>
-                <option value="6">Sayef Sharkar</option>
-                <option value="7">Craig Forbes</option>
-              </select>
-            </div>
-          </div>
-        </div>
-        <div class="col-xl-6 col-lg-6">
-          <div class="search-bar mb-3">
-            <div class="selectgroup">
-              <select>
-                <option value="">Choose Status</option>
-                <option value="Pending">Pending</option>
-                <option value="Approved">Approved</option>
-                <option value="Rejected">Rejected</option>
-            </select>
-            </div>
-          </div>
-        </div> --}}
+
+        {{-- here removed status input --}}
+
         <div class="col-xl-12 col-lg-12">
           <div class="mb-3">
             <label class="d-block pb-2 pl-2 font-weight-normal">Leave Time</label>
@@ -100,7 +70,7 @@
             </div>
           </div>
         </div>
-        {{-- here be better --}}
+        {{-- loop through all employee to show in the selection option --}}
         <div class="col-xl-6 col-lg-6">
             <div class="search-bar">
               <div class="selectgroup">
@@ -117,6 +87,7 @@
             </div>
           </div>
         </div>
+        {{-- to remove ckeditor remove id="editor" --}}
         <div class="col-xl-12 col-lg-12">
             <div class="textareafield mb-3">
               <textarea id="editor" placeholder="Reason" rows="5" name="reason" @error('reason') style="border: 1px solid #ff0e0e" @enderror>{{{ old('reason') }}}</textarea>
@@ -130,12 +101,6 @@
           <button type="submit" class="btn btn-sm defaultBtn float-right">Submit</button>
         </div>
       </div>
-      {{-- validation error --}}
-        {{-- @if ($errors->any())
-            @foreach ($errors->all() as $error)
-                {{ Toastr()->info($error, "Validation Error")}}
-            @endforeach
-        @endif --}}
     </form>
     <!-- End Form -->
   </div>

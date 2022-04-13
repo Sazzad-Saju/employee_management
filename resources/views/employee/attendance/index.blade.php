@@ -4,6 +4,7 @@
 @section('content')
 <div class="main">
 
+    {{-- attendance button --}}
     <div class="row">
         <div class="col-md-12">
             <div class="flexitembox">
@@ -16,6 +17,7 @@
             </div>
         </div>
     </div>
+    {{-- end attendance button --}}
 
     <!-- Start Form -->
     @foreach($attendances as $attendance)
@@ -24,6 +26,7 @@
             <div class="col-xl-5 col-lg-12 employee-view mb-3">
                 <ul>
                     <li><i class="fas fa-concierge-bell mr-1"></i>Attendance Date:</li>
+                    {{-- display d/m/Y (show) converted from Y/m/d (store) --}}
                     <li class="">{{date('d/m/Y',strtotime($attendance->date))}}</li>
                 </ul>
             </div>
@@ -43,6 +46,8 @@
     </form>
     <!-- End Form -->
     @endforeach
+
+    {{-- attendance pagination --}}
     <div class="d-flex justify-content-center">
         {{$attendances->links()}}
     </div>

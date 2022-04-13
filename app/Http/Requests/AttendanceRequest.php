@@ -25,6 +25,7 @@ class AttendanceRequest extends FormRequest
     public function rules()
     {
         return [
+            // check if attendance-date is unique of the authenticated employee
             'date' => [
                 'required',
                 'date_equals:today',

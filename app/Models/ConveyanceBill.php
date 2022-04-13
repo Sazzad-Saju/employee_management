@@ -11,11 +11,13 @@ class ConveyanceBill extends Model
     use HasFactory, SoftDeletes;
     protected $guarded = [];
 
+    /* Bill-Employee relation */
     public function employee()
     {
         return $this->belongsTo(Employee::class);
     }
 
+    /* Bill-BillType relation */
     public function billType(){
         return $this->belongsTo(BillType::class);
     }

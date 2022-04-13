@@ -67,7 +67,7 @@ return [
     |
     */
 
-    // 'timezone' => 'UTC+6',
+    // newly modified timezone
     'timezone' => 'Asia/Dhaka',
 
     /*
@@ -166,7 +166,7 @@ return [
         /*
          * Package Service Providers...
          */
-        // toastr
+        // newly added toastr
         Brian2694\Toastr\ToastrServiceProvider::class,
         Barryvdh\Debugbar\ServiceProvider::class,
         /*
@@ -178,7 +178,7 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
-        // image intervention
+        // newly added image intervention
         Intervention\Image\ImageServiceProvider::class,
 
     ],
@@ -232,9 +232,10 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
-        // toastr
+        // newly added toastr
         'Toastr'  => Brian2694\Toastr\Facades\Toastr::class,
         'Debugbar' => Barryvdh\Debugbar\Facades\Debugbar::class,
+        // newly added Image
         'Image' => Intervention\Image\Facades\Image::class,
     ],
 

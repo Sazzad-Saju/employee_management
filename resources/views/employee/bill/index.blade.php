@@ -9,12 +9,13 @@
             <span class="title">Conveyance</span>
           </div>
           <div>
-            <a href="{{route('employee.bill.create')}}" class="hvr-icon-float-away" style="display: none"><i class="fas fa-plus hvr-icon"></i> Add Item</a>
+            <a href="{{route('employee.bill.create')}}" class="hvr-icon-float-away hide"><i class="fas fa-plus hvr-icon"></i> Add Item</a>
           </div>
         </div>
       </div>
     </div>
     <!-- Start Form -->
+    {{-- print each bill --}}
     @foreach($bills as $bill)
     <form>
       <div class="row mb-3 shadow bg-white rounded-3 p-3 mx-2">
@@ -51,11 +52,12 @@
             </li>
           </ul>
         </div>
-
       </div>
     </form>
     @endforeach
     <!-- End Form -->
+
+    {{-- link paginatation --}}
     <div class="d-flex justify-content-center">
         {{$bills->links()}}
     </div>

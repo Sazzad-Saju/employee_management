@@ -2,10 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\ConveyanceBill;
 use Illuminate\Http\Request;
 
-class BillController extends Controller
+class NotificationController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,9 +13,8 @@ class BillController extends Controller
      */
     public function index()
     {
-        /* gets all bills of the authenticated employee */
-        $bills = ConveyanceBill::where(['employee_id'=> auth('employee')->user()->id])->orderBy('created_at','desc')->paginate(3);
-        return view('employee.bill.index',compact('bills'));
+        auth('employee')->user()->unReadNotifications->markAsRead();
+        return redirect()->back();
     }
 
     /**
@@ -26,7 +24,7 @@ class BillController extends Controller
      */
     public function create()
     {
-        return view('employee.bill.create');
+        //
     }
 
     /**
@@ -48,7 +46,9 @@ class BillController extends Controller
      */
     public function show($id)
     {
-        //
+        // return $id;
+        auth('employee')->user()->unReadNotifications->where('id',$id)->markAsRead();
+        return redirect()->back();
     }
 
     /**
