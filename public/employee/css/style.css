@@ -494,7 +494,8 @@ body {
 @import url('https://fonts.googleapis.com/css2?family=Black+Ops+One&family=Lobster&family=Satisfy&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
 .bg-cover {
-    background: url('https://fxmetatech.com/wp-content/uploads/2020/07/banner.jpg');
+    /* background: url('https://fxmetatech.com/wp-content/uploads/2020/07/banner.jpg'); */
+    background-image: url('../img/banner.jpg');
     min-height: 200px;
     background-repeat: no-repeat;
     background-position: top left;
@@ -556,6 +557,12 @@ body {
 #email,
 #password {
     background-color: white;
+    color: black;
+}
+
+.sm-line-space p {
+    margin: 0!important;
+    padding: 0!important;
 }
 
 #myVideo {

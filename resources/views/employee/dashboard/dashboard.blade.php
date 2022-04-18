@@ -9,9 +9,17 @@
                 {{-- prints each notice with date and messages that can contain html tag --}}
                 @foreach ($notices as $notice)
                     <form>
-                        <div class="row mb-3 shadow bg-white rounded-3 p-3 mx-2">
-                            Date: {{ $notice->created_at->format('d/m/Y') }}<br><br>
-                            {!! $notice->message !!}
+                        <div class="mb-3 shadow bg-white rounded-3 p-3 mx-2">
+                            <div class="row mb-2">
+                                <div class="col">
+                                    Date: {{ $notice->created_at->format('d/m/Y') }}
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col sm-line-space">
+                                    {!! $notice->message !!}
+                                    </div>
+                            </div>
                         </div>
                     </form>
                     <!-- End Form -->
