@@ -12,5 +12,7 @@
 {{-- ckeditor --}}
 <script src="https://cdn.ckeditor.com/ckeditor5/30.0.0/classic/ckeditor.js"></script>
 
+{{-- sweetalert --}}
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 {!! Toastr::message() !!}

@@ -94,6 +94,8 @@ class LoanController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Loan::destroy($id);
+        Toastr::warning('Deleted pending loan', "Loan Delete");
+        return redirect()->back();
     }
 }

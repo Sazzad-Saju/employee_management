@@ -112,13 +112,13 @@ class InfoController extends Controller
         /* update security: change current password */
         $current_pass = $request->input('pass');
         $new_pass = $request->input('new_pass');
-        if($current_pass != null && $new_pass != null){
-            if(Hash::check($current_pass, auth()->user()->password)){
-                $newHashedPass = Hash::make($new_pass);
-                Employee::findOrFail($id)->update(['password' => $newHashedPass]);
-            }else{
+        if($current_pass != null){
+            if(!Hash::check($current_pass, auth()->user()->password)){
                 Toastr::error('Invalid Credential!','Authentication Error');
                 return redirect()->back();
+            }elseif($new_pass != null){
+                $newHashedPass = Hash::make($new_pass);
+                Employee::findOrFail($id)->update(['password' => $newHashedPass]);
             }
         }
         /* end update security */

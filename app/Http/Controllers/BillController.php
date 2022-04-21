@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\ConveyanceBill;
 use Illuminate\Http\Request;
+use Brian2694\Toastr\Facades\Toastr;
 
 class BillController extends Controller
 {
@@ -82,6 +83,8 @@ class BillController extends Controller
      */
     public function destroy($id)
     {
-        //
+        ConveyanceBill::destroy($id);
+        Toastr::warning('Deleted pending bill', "Bill Delete");
+        return redirect()->back();
     }
 }

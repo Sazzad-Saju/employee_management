@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use App\Models\Leave;
 use Brian2694\Toastr\Facades\Toastr;
 use Carbon\Carbon;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class LeaveController extends Controller
 {
@@ -75,7 +76,7 @@ class LeaveController extends Controller
      */
     public function show($id)
     {
-        //
+        return 'show';
     }
 
     /**
@@ -109,6 +110,8 @@ class LeaveController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Leave::destroy($id);
+        Toastr::warning('Deleted pending leave', "Leave Delete");
+        return redirect()->back();
     }
 }

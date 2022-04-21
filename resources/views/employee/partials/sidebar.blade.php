@@ -3,13 +3,13 @@
         <!-- Profile Image Card  -->
         <div class="image-card">
             <img src="{{asset(auth('employee')->user()->profile_image)}}" alt="user-img" class="img-fluid pb-2">
-            <div class="user-name">{{auth('employee')->user()->name}}</div>
+            <div class="user-name"> <a class="text-decoration-none" href="{{route('employee.info.index')}}"> {{auth('employee')->user()->name}} </a></div>
             <div class="user-designation">{{auth('employee')->user()->designation->name}}</div>
             <div class="user-number">{{auth('employee')->user()->phone}}</div>
             <ul class="pt-1">
-                <li><a href="{{auth('employee')->user()->fb_url}}"><i class="fab fa-facebook-f"></i></a></li>
-                <li><a href="{{auth('employee')->user()->li_url}}"><i class="fab fa-linkedin"></i></a></li>
-                <li><a href="{{auth('employee')->user()->tt_url}}"><i class="fab fa-twitter"></i></a></li>
+                <li><a target="_blank" href="{{auth('employee')->user()->fb_url}}"><i class="fab fa-facebook-f"></i></a></li>
+                <li><a target="_blank" href="{{auth('employee')->user()->li_url}}"><i class="fab fa-linkedin"></i></a></li>
+                <li><a target="_blank" href="{{auth('employee')->user()->tt_url}}"><i class="fab fa-twitter"></i></a></li>
             </ul>
         </div>
         <!-- All Links -->

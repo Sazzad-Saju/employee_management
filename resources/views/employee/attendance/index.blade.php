@@ -12,7 +12,7 @@
                     <span class="title">Attendance</span>
                 </div>
                 <div>
-                    <a href="{{route('employee.attendance.create')}}" class="hvr-icon-float-away"><i class="fas fa-plus hvr-icon"></i> Add Item</a>
+                    <a href="{{route('employee.attendance.create')}}" class="hvr-icon-float-away"><i class="fas fa-plus hvr-icon"></i> Gives Attendance </a>
                 </div>
             </div>
         </div>

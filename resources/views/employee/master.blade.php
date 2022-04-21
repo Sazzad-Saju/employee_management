@@ -41,7 +41,8 @@
     @stack('scripts')
     {{-- linked ckeditor to use on any page --}}
     @yield('ckeditor')
-
+    @yield('confirmDialog')
+    @include('sweetalert::alert')
 </body>
 <script>
     /* jquery method for loader applied on each dynamic content */

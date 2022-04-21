@@ -586,3 +586,7 @@ body {
 .red-border {
     border: 1px solid #ff0e0e;
 }
+
+.text-decoration-none:hover {
+    color: #0a4f94;
+}
