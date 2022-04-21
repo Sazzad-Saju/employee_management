@@ -8,47 +8,40 @@
       </div>
     </div>
     <!-- Start Form -->
-    <form>
+    <form action="{{route('employee.bill.store')}}" method="POST">
+        @csrf
       <div class="row mb-5">
         <div class="col-xl-6 col-lg-12">
           <div class="search-bar mb-3">
             <div class="selectgroup">
-              <select>
+              <select name="bill_type_id" @error('bill_type_id') style="border: 1px solid #ff0e0e" @enderror>
                 <option value="">Choose Bill Type</option>
-                <option value="1">Bkash</option>
-                <option value="2">Perfect Money</option>
-                <option value="3">Bank</option>
-                <option value="4">Hand Cash</option>
+                @foreach ( $billTypes as $billType )
+                    <option value="{{$billType->id}}"> {{$billType->name}} </option>
+                @endforeach
               </select>
+                @error('bill_type_id')
+                    <small class="text-danger">{{ $message }}</small>
+                @enderror
             </div>
           </div>
         </div>
         <div class="col-xl-6 col-lg-12">
           <div class="search-bar mb-3">
-            <input type="number" id="amount" placeholder="Amount">
+            <input type="number" id="amount" placeholder="Amount" name="amount" @error('amount') style="border: 1px solid #ff0e0e" @enderror value="{{old('amount')}}">
             <i class="fas fa-dollar-sign"></i>
+            @error('amount')
+                <small class="text-danger">{{$message}}</small>
+            @enderror
           </div>
         </div>
-        <div class="col-xl-6 col-lg-12">
-          <div class="search-bar mb-3">
-            <input type="text" class="singleDateRange value" placeholder="Date" id="startDate">
-          </div>
-        </div>
-        <div class="col-xl-6 col-lg-12">
-          <div class="search-bar mb-3">
-            <div class="selectgroup">
-              <select>
-                <option value="">Choose Approval Type</option>
-                <option value="1">Yes</option>
-                <option value="2">No</option>
-                <option value="3">Pending</option>
-              </select>
-            </div>
-          </div>
-        </div>
+        {{-- deleted date, approvalType --}}
         <div class="col-xl-12 col-lg-12">
           <div class="textareafield mb-3">
-            <textarea name="" id="" placeholder="Discription" cols="" rows="5"></textarea>
+            <textarea name="description" id="" placeholder="Discription" cols="" rows="5" @error('description') style="border: #ff0e0e 1px solid" @enderror>{{old('description')}}</textarea>
+            @error('description')
+                <small class="text-danger">{{$message}}</small>
+            @enderror
           </div>
         </div>
       </div>
