@@ -91,37 +91,10 @@ class InfoController extends Controller
             Image::make($profile_image)->save($filename);
             Employee::findOrFail($id)->update(['profile_image' => $filename]);
         }
-        // if($request->hasFile('certificate_image')){
-        //     $certificate_image = $request->file('certificate_image');
-        //     $filename = 'storage/img/certificate_image/'.time().'.'.$certificate_image->getClientOriginalExtension();
-        //     Image::make($certificate_image)->save($filename);
-        //     Employee::findOrFail($id)->update(['certificate_image' => $filename]);
-        // }
-        // if($request->hasFile('nid_image')){
-        //     $nid_image = $request->file('nid_image');
-        //     $filename = 'storage/img/nid_image/'.time().'.'.$nid_image->getClientOriginalExtension();
-        //     Image::make($nid_image)->save($filename);
-        //     Employee::findOrFail($id)->update(['nid_image' => $filename]);
-        // }
-        /* end image upload section */
 
         /* update or rewrite most of the data from employee edit */
         $data = $request->except(['profile_image']);
         Employee::findOrFail($id)->update($data);
-
-        /* update security: change current password */
-        // $current_pass = $request->input('pass');
-        // $new_pass = $request->input('new_pass');
-        // if($current_pass != null){
-        //     if(!Hash::check($current_pass, auth()->user()->password)){
-        //         Toastr::error('Invalid Credential!','Authentication Error');
-        //         return redirect()->back();
-        //     }elseif($new_pass != null){
-        //         $newHashedPass = Hash::make($new_pass);
-        //         Employee::findOrFail($id)->update(['password' => $newHashedPass]);
-        //     }
-        // }
-        /* end update security */
 
         /* update or unchanged gives successful message */
         Toastr::success('Successfully updated profile', "Profile Update");

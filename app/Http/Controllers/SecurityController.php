@@ -18,6 +18,7 @@ use Brian2694\Toastr\Facades\Toastr;
 use App\Models\Employee;
 use App\Models\Designation;
 use App\Models\Leave;
+use Illuminate\Support\Facades\Hash;
 
 class SecurityController extends Controller
 {
@@ -49,17 +50,12 @@ class SecurityController extends Controller
      */
     public function store(LoginRequest $request)
     {
-        // return $request->all();
-        $request->authenticate();
+        /* different update applied */
 
-        $request->session()->regenerate();
-        Toastr::success('Verified '.auth('employee')->user()->name);
-        // return redirect()->intended(RouteServiceProvider::HOME);
-        // get related table data
-        //$employees = Employee::with('designation')->get();
-        // $designations = Designation::all();
-        // return auth('employee')->user()->designation->id;
-        return view('employee.auth.update');
+        // $request->authenticate();
+        // $request->session()->regenerate();
+        // Toastr::success('Verified '.auth('employee')->user()->name);
+        // return redirect()->route('employee.auth.update');
     }
 
     /**
@@ -93,7 +89,23 @@ class SecurityController extends Controller
      */
     public function update(UpdateRequest $request, $id)
     {
-        return $request->all();
+        /* update security: change current password */
+        $current_pass = $request->input('pass');
+        $new_pass = $request->input('new_pass');
+        if($current_pass != null){
+            if(!Hash::check($current_pass, auth()->user()->password)){
+                Toastr::error('Invalid Credential!','Authentication Error');
+                return redirect()->back();
+            }elseif($new_pass != null){
+                $newHashedPass = Hash::make($new_pass);
+                Employee::findOrFail($id)->update(['password' => $newHashedPass]);
+            }
+        }
+        /* end update security */
+
+        /* update or unchanged gives successful message */
+        Toastr::success('Successfully changed password', "Password Changed");
+        return redirect()->route('employee.info.index');
     }
 
     /**

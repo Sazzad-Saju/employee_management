@@ -40,7 +40,8 @@ Route::name('employee.')->middleware('auth:employee')->group(function () {
     Route::resource('info', InfoController::class);
     Route::resource('bill', BillController::class);
     Route::resource('security',SecurityController::class);
-    // Route::get('/verify',[SecurityController::class,'index'])->name('auth.verify');
+    // Route::post('/security/update',[SecurityController::class,'show'])->name('auth.update');
+
 });
 /* end employee routes */
 

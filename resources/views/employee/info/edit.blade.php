@@ -25,14 +25,7 @@
           </div>
         </div>
 
-        {{-- this part is required when username is applied --}}
-        {{--<div class="col-xl-4 col-lg-6">
-          <div class="search-bar mb-3">
-            <input type="text" id="lastName" placeholder="Last Name">
-            <i class="far fa-user"></i>
-          </div>
-        </div> --}}
-        {{-- end username --}}
+        {{-- removed last name part --}}
 
         <div class="col-xl-4 col-lg-6">
           <div class="search-bar mb-3">
@@ -163,175 +156,13 @@
           </div>
         </div>
       </div>
-      {{-- Ends Personal Info --}}
-
-      {{-- Update Security section--}}
-      {{-- <div class="row mb-5">
-        <div class="col-xl-12">
-          <h1 class="form-title">Update Security</h1>
-        </div>
-        <div class="col-xl-4 col-lg-6">
-          <div class="search-bar mb-3">
-            <input type="password" placeholder="Current Password" name="pass">
-            <i class="fa fa-key" aria-hidden="true"></i>
-              @error('pass')
-                  <small class="text-danger">{{ $message }}</small>
-              @enderror
-          </div>
-        </div>
-        <div class="col-xl-4 col-lg-6">
-            <div class="search-bar mb-3">
-              <input type="password" placeholder="New Password" name="new_pass">
-                @error('new_pass')
-                    <small class="text-danger">{{ $message }}</small>
-                @enderror
-            </div>
-          </div>
-          <div class="col-xl-4 col-lg-6">
-            <div class="search-bar mb-3">
-              <input type="password" placeholder="Repeat New Password" name="repeat_new">
-                @error('repeat_new')
-                    <small class="text-danger">{{ $message }}</small>
-                @enderror
-            </div>
-          </div>
-      </div> --}}
-      {{-- end of update security --}}
-
-      {{-- important info section --}}
-      {{-- <div class="row mb-5">
-        <div class="col-xl-12">
-          <h1 class="form-title">Important Info</h1>
-        </div>
-        <div class="col-xl-4 col-lg-6">
-          <div class="search-bar mb-3">
-            <div class="selectgroup">
-              <select name="department_id">
-                <option value="">Choose Department</option>
-                @foreach($departments as $department)
-                    <option value="{{$department->id}}" {{$employee->department_id == $department->id ? 'selected' : ''}}>{{$department->name}}</option>
-                @endforeach
-              </select>
-            </div>
-          </div>
-        </div>
-        <div class="col-xl-4 col-lg-6">
-          <div class="search-bar mb-3">
-            <div class="selectgroup">
-              <select name="designation_id">
-                <option value="">Choose Designation</option>
-                @foreach($designations as $designation)
-                    <option value="{{$designation->id}}" {{$employee->designation_id == $designation->id ? 'selected': ''}}>{{$designation->name}}</option>
-                @endforeach
-              </select>
-            </div>
-          </div>
-        </div>
-        <div class="col-xl-4 col-lg-12">
-          <div class="search-bar mb-3">
-            <input type="text" id="salary" placeholder="Salary" name="salary" value="{{$employee->salary}}">
-            <i class="fas fa-dollar-sign"></i>
-            @error('salary')
-                <small class="text-danger">{{ $message }}</small>
-            @enderror
-          </div>
-        </div>
-        <div class="col-xl-4 col-lg-12">
-          <div class="search-bar mb-3">
-            <label for="joiningDate" class="d-block pb-2 ps-2">Joining Date</label>
-            <input type="date" id="joiningDate" name="join_date" value="{{$employee->join_date}}">
-          </div>
-        </div>
-        <div class="col-xl-4 col-lg-6">
-          <div class="search-bar mb-3">
-            <label for="leavingDate" class="d-block pb-2 ps-2">Leaveing Date</label>
-            <input type="date" id="leavingDate" name="quit_date" value="{{$employee->quit_date}}">
-          </div>
-        </div> --}}
-
-        {{-- employee status disabled --}}
-        {{-- <div class="col-xl-4 col-lg-6">
-          <div class="mb-3">
-            <label class="d-block pb-3">Employee Status</label>
-            <div class="form-check form-check-inline">
-              <input class="form-check-input" type="checkbox" name="is_current_employee" value="1" id="inlineRadio1" {{$employee->is_current_employee == 1 ? 'checked': ''}} disabled>
-              <label class="form-check-label fw-normal" for="inlineRadio1">Current</label>
-            </div>
-            <div class="form-check form-check-inline">
-              <input class="form-check-input" type="checkbox" name="is_provision_period" value="1" id="inlineRadio2" {{$employee->is_provision_period == 1? 'checked': ''}} disabled>
-              <label class="form-check-label fw-normal" for="inlineRadio2">Provision</label>
-            </div>
-          </div>
-        </div> --}}
-        {{-- end employee status --}}
-
-        {{-- <div class="col-xl-4 col-lg-6">
-          <div class="search-bar filetype mb-3">
-            <label for="profilepicture" class="d-block pb-2 ps-2">Certificate Image</label>
-            <input type="file" name="certificate_image">
-            <img src="{{asset($employee->certificate_image)}}" width="180" class="img-fluid my-2 ms-3"  alt="avatar">
-          </div>
-        </div>
-        <div class="col-xl-4 col-lg-6">
-          <div class="search-bar filetype mb-3">
-            <label for="profilepicture" class="d-block pb-2 ps-2">NID Image</label>
-            <input type="file" name="nid_image">
-            <img src="{{asset($employee->nid_image)}}" width="180" class="img-fluid my-2 ms-3"  alt="avatar">
-          </div>
-        </div>
-        <div class="col-xl-4 col-lg-12">
-          <div class="search-bar mb-3">
-            <label for="profilepicture" class="d-block pb-2 ps-2">NID Number</label>
-            <input type="number" id="nidNumber" name="nid_number" value="{{$employee->nid_number}}">
-            @error('nid_number')
-                <small class="text-danger">{{ $message }}</small>
-            @enderror
-          </div>
-        </div>
-      </div> --}}
-      {{-- end important info --}}
-
-      {{-- emergency info section --}}
-      {{-- <div class="row mb-5">
-        <div class="col-xl-12">
-          <h1 class="form-title">Emergency Info</h1>
-        </div>
-        <div class="col-xl-4 col-lg-6">
-          <div class="search-bar mb-3">
-            <input type="text" id="contactName" placeholder="Emergency Contact Name" name="emergency_contact_person" value="{{$employee->emergency_contact_person}}">
-            <i class="fas fa-user"></i>
-            @error('emergency_contact_person')
-                <small class="text-danger">{{ $message }}</small>
-            @enderror
-          </div>
-        </div>
-        <div class="col-xl-4 col-lg-6">
-          <div class="search-bar mb-3">
-            <input type="text" id="phoneNumber" placeholder="Emergency Contact Phone" name="emergency_contact_phone" value="{{$employee->emergency_contact_phone}}">
-            <i class="fas fa-mobile-alt"></i>
-            @error('emergency_contact_phone')
-                <small class="text-danger">{{ $message }}</small>
-            @enderror
-          </div>
-        </div>
-        <div class="col-xl-4 col-lg-6">
-          <div class="search-bar mb-3">
-            <input type="text" id="contactName" placeholder="Emergency Contact Relation" name="emergency_contact_relation" value="{{$employee->emergency_contact_relation}}">
-            <i class="fas fa-user"></i>
-          </div>
-        </div>
-        <div class="col-xl-12 col-lg-12">
-          <div class="textareafield mb-3">
-            <textarea placeholder="Emergency Contact Address" cols="30" rows="5" name="emergency_contact_address">{{$employee->emergency_contact_address}}</textarea>
-          </div>
-        </div>
-      </div> --}}
-      {{-- end emergency info --}}
+    {{-- removed part office info, emmergency info --}}
       <div class="row">
         <div class="col-md-12">
           <button type="submit" class="btn btn-sm defaultBtn float-right">Submit</button>
         </div>
       </div>
+    {{-- end of personal info --}}
     </form>
   </div>
 @endsection

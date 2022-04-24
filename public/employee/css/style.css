@@ -496,6 +496,7 @@ body {
 .bg-cover {
     /* background: url('https://fxmetatech.com/wp-content/uploads/2020/07/banner.jpg'); */
     background-image: url('../img/banner.jpg');
+    /* height: 20%; */
     min-height: 200px;
     background-repeat: no-repeat;
     background-position: top left;
@@ -589,4 +590,13 @@ body {
 
 .text-decoration-none:hover {
     color: #0a4f94;
+}
+
+.update {
+    background-color: #F8F7FC;
+}
+
+.ctrl-search-bar {
+    width: 50%!important;
+    margin: 0 auto;
 }

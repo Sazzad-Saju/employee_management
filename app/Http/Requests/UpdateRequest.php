@@ -24,7 +24,8 @@ class UpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            'new_pass' => 'required|min:8',
+            'pass' => 'required',
+            'new_pass' => 'required|min:8|different:pass',
             'repeat_new' => 'required|min:8|same:new_pass',
         ];
     }
@@ -32,6 +33,7 @@ class UpdateRequest extends FormRequest
     {
         return [
             'repeat_new.same' => 'The new password must be confirmed',
+            'new_pass.different'=> 'New Password must be different',
         ];
     }
 }
