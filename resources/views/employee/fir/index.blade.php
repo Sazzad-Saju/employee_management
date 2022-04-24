@@ -11,7 +11,7 @@
                     </div>
                     <div>
                         <a href="{{ route('employee.fir.create') }}" class="hvr-icon-float-away"><i
-                                class="fas fa-plus hvr-icon"></i> Add Item</a>
+                                class="fas fa-plus hvr-icon"></i>Report Now</a>
                     </div>
                 </div>
             </div>

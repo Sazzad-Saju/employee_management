@@ -10,17 +10,25 @@
                         <span class="title">Employee Information</span>
                     </div>
                     <div>
-                        <a href="{{ route('employee.info.edit', auth('employee')->user()->id) }}"
-                            class="hvr-icon-float-away"><i class="fas fa-plus hvr-icon"></i>Update Profile</a>
+                        <a href="{{route('employee.security.index')}}" class="hvr-icon-float-away"><i class="fas fa-plus hvr-icon"></i>Change Password</a>
                     </div>
                 </div>
             </div>
         </div>
 
         <!-- Start Form -->
-        <form>
+        <form action="{{route('employee.info.edit',auth('employee')->user()->id)}}" method="GET">
+            @csrf
             {{-- Personal Info section --}}
-            <div class="row mb-3 shadow bg-white rounded-3 p-3 mx-2">
+            <div class="mb-3 shadow bg-white rounded-3 p-3 mx-2">
+                <div class="row text-right">
+                    <div class="col">
+                        <button class="text-secondary btn">
+                            <i class="fas fa-edit"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="row">
                 <div class="col-xl-12 col-lg-12 employee-view mb-3">
                     <img src="{{ auth('employee')->user()->profile_image }}" width="90" class="img-fluid my-2 propic" alt="avatar">
                 </div>
@@ -88,10 +96,17 @@
                     </ul>
                 </div>
             </div>
+            </div>
             {{-- end personal info section --}}
 
             {{-- important info section --}}
-            <div class="row mb-3 shadow bg-white rounded-3 p-3 mx-2">
+            <div class="mb-3 shadow bg-white rounded-3 p-3 mx-2">
+                <div class="row">
+                    <div class="col text-right">
+                        <button class="text-secondary btn" disabled><i class="fas fa-lock"></i></button>
+                    </div>
+                </div>
+                <div class="row">
                 <div class="col-xl-12">
                     <h1 class="form-title">Important Info</h1>
                 </div>
@@ -184,6 +199,7 @@
                         </li>
                     </ul>
                 </div>
+            </div>
             </div>
             {{-- end important info section --}}
         </form>

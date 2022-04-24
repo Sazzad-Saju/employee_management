@@ -54,8 +54,8 @@
         </div>
         <div class="col-xl-4 col-lg-6">
           <div class="search-bar mb-3">
-            <input type="email" id="officeEmail" placeholder="Office Email" name="office_email" value="{{$employee->office_email}}">
-            <i class="far fa-envelope"></i>
+            <input type="email" id="officeEmail" placeholder="Office Email" name="office_email" value="{{$employee->office_email}}" readonly>
+            <i class="fas fa-eye"></i>
             @error('office_email')
                 <small class="text-danger">{{ $message }}</small>
             @enderror
@@ -63,8 +63,8 @@
         </div>
         <div class="col-xl-4 col-lg-6">
           <div class="search-bar mb-3">
-            <input type="text" id="officePhone" placeholder="Office Phone" name="office_phone" value="{{$employee->office_phone}}">
-            <i class="fas fa-mobile-alt"></i>
+            <input type="text" id="officePhone" placeholder="Office Phone" name="office_phone" value="{{$employee->office_phone}}" readonly>
+            <i class="fas fa-eye"></i>
             @error('office_phone')
                 <small class="text-danger">{{ $message }}</small>
             @enderror
@@ -166,7 +166,7 @@
       {{-- Ends Personal Info --}}
 
       {{-- Update Security section--}}
-      <div class="row mb-5">
+      {{-- <div class="row mb-5">
         <div class="col-xl-12">
           <h1 class="form-title">Update Security</h1>
         </div>
@@ -195,11 +195,11 @@
                 @enderror
             </div>
           </div>
-      </div>
+      </div> --}}
       {{-- end of update security --}}
 
       {{-- important info section --}}
-      <div class="row mb-5">
+      {{-- <div class="row mb-5">
         <div class="col-xl-12">
           <h1 class="form-title">Important Info</h1>
         </div>
@@ -247,10 +247,10 @@
             <label for="leavingDate" class="d-block pb-2 ps-2">Leaveing Date</label>
             <input type="date" id="leavingDate" name="quit_date" value="{{$employee->quit_date}}">
           </div>
-        </div>
+        </div> --}}
 
         {{-- employee status disabled --}}
-        <div class="col-xl-4 col-lg-6">
+        {{-- <div class="col-xl-4 col-lg-6">
           <div class="mb-3">
             <label class="d-block pb-3">Employee Status</label>
             <div class="form-check form-check-inline">
@@ -262,10 +262,10 @@
               <label class="form-check-label fw-normal" for="inlineRadio2">Provision</label>
             </div>
           </div>
-        </div>
+        </div> --}}
         {{-- end employee status --}}
 
-        <div class="col-xl-4 col-lg-6">
+        {{-- <div class="col-xl-4 col-lg-6">
           <div class="search-bar filetype mb-3">
             <label for="profilepicture" class="d-block pb-2 ps-2">Certificate Image</label>
             <input type="file" name="certificate_image">
@@ -288,11 +288,11 @@
             @enderror
           </div>
         </div>
-      </div>
+      </div> --}}
       {{-- end important info --}}
 
       {{-- emergency info section --}}
-      <div class="row mb-5">
+      {{-- <div class="row mb-5">
         <div class="col-xl-12">
           <h1 class="form-title">Emergency Info</h1>
         </div>
@@ -325,7 +325,7 @@
             <textarea placeholder="Emergency Contact Address" cols="30" rows="5" name="emergency_contact_address">{{$employee->emergency_contact_address}}</textarea>
           </div>
         </div>
-      </div>
+      </div> --}}
       {{-- end emergency info --}}
       <div class="row">
         <div class="col-md-12">

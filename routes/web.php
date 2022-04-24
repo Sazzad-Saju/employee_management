@@ -12,6 +12,7 @@ use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\NotificationController;
 use App\Models\Employee;
 use App\Notifications\LatestNotice;
+use App\Http\Controllers\SecurityController;
 
 /*
 |--------------------------------------------------------------------------
@@ -38,6 +39,8 @@ Route::name('employee.')->middleware('auth:employee')->group(function () {
     Route::resource('fir', FirController::class);
     Route::resource('info', InfoController::class);
     Route::resource('bill', BillController::class);
+    Route::resource('security',SecurityController::class);
+    // Route::get('/verify',[SecurityController::class,'index'])->name('auth.verify');
 });
 /* end employee routes */
 
