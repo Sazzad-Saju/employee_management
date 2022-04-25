@@ -8,10 +8,11 @@ const sidebar = document.getElementById('sidebar');
 //     }
 // }
 
-toggle.onclick = function() {
-    toggle.classList.toggle('active');
-    sidebar.classList.toggle('active');
-}
+// toggle.onclick = function() {
+//     console.log(toggle);
+//     toggle.classList.toggle('active');
+//     sidebar.classList.toggle('active');
+// }
 
 //Initialize DateRangePicker for single date Elements
 let date_format = "DD-MM-YYYY";

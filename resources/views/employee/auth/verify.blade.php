@@ -2,7 +2,6 @@
 @section('title', 'Update Password')
 @section('content')
     <div class="main">
-        {{-- update button section --}}
         <div class="row">
             <div class="col-md-12">
                 <div class="flexitembox">
@@ -26,9 +25,9 @@
                 <div class="row">
                     <div class="col-xl-12">
                         <div class="search-bar mb-3 ctrl-search-bar">
-                            <input type="password" type="text" class="update"
+                            <input type="password" type="text" class="update" id="pass"
                                 placeholder="Current Password" name="pass" @error('pass') style="border: 1px solid #ff0e0e" @enderror>
-                            <i class="far fa-eye"></i>
+                            <i class="far fa-eye" onclick="togglePass(event)"></i>
                             @error('pass')
                                 <small class="text-danger">{{ $message }}</small>
                             @enderror
@@ -41,7 +40,7 @@
                             <input type="password" type="text" class="update"
                                 placeholder="New Password" name="new_pass"
                                 @error('new_pass') style="border: 1px solid #ff0e0e" @enderror>
-                            <i class="far fa-eye"></i>
+                            <i class="far fa-eye" onclick="togglePass(event)"></i>
                             @error('new_pass')
                                 <small class="text-danger">{{ $message }}</small>
                             @enderror
@@ -54,7 +53,7 @@
                             <input type="password" type="text" class="update"
                                 placeholder="Repeat New Password" name="repeat_new"
                                 @error('repeat_new') style="border: 1px solid #ff0e0e" @enderror>
-                            <i class="far fa-eye"></i>
+                            <i class="far fa-eye" onclick="togglePass(event)"></i>
                             @error('repeat_new')
                                 <small class="text-danger">{{ $message }}</small>
                             @enderror
@@ -67,4 +66,20 @@
     </form>
     <!-- End Form -->
     </div>
+
+{{-- togglePass --}}
+<script>
+    var state = false;
+    function togglePass(e){
+        if(state){
+            e.target.style.color='#7a797e'
+            e.target.previousElementSibling.setAttribute('type','password');
+            state = false;
+        }else{
+            e.target.style.color='#5887ef'
+            e.target.previousElementSibling.setAttribute('type','text');
+            state = true;
+        }
+    }
+</script>
 @endsection

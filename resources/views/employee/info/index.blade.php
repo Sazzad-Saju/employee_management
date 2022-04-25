@@ -2,7 +2,7 @@
 @section('title', 'Employee Info')
 @section('content')
     <div class="main">
-        {{-- update button section --}}
+        {{-- changed password button section --}}
         <div class="row">
             <div class="col-md-12">
                 <div class="flexitembox">
@@ -23,10 +23,21 @@
             <div class="mb-3 shadow bg-white rounded-3 p-3 mx-2">
                 <div class="row text-right">
                     <div class="col">
-                        <button class="text-secondary btn">
+                        <div class="wrapper">
+                            <div class="icon edit">
+                                <div class="toolname">Edit</div>
+                                <span><button class="text-secondary btn \">
+                                    <i class="fas fa-edit"></i>
+                                </button></span>
+                            </div>
+                        </div>
+                    </div>
+                    {{-- <div class="col">
+                        <span class="toolname">Edit</span>
+                        <button class="text-secondary btn \">
                             <i class="fas fa-edit"></i>
                         </button>
-                    </div>
+                    </div> --}}
                 </div>
                 <div class="row">
                 <div class="col-xl-12 col-lg-12 employee-view mb-3">
@@ -103,8 +114,16 @@
             <div class="mb-3 shadow bg-white rounded-3 p-3 mx-2">
                 <div class="row">
                     <div class="col text-right">
-                        <button class="text-secondary btn" disabled><i class="fas fa-lock"></i></button>
+                        <div class="wrapper">
+                            <div class="icon">
+                                <div class="toolname">Lock</div>
+                                <span><button class="text-secondary btn" disabled><i class="fas fa-lock"></i></button></span>
+                            </div>
+                        </div>
                     </div>
+                    {{-- <div class="col text-right">
+                        <button class="text-secondary btn" disabled><i class="fas fa-lock"></i></button>
+                    </div> --}}
                 </div>
                 <div class="row">
                 <div class="col-xl-12">
@@ -205,4 +224,7 @@
         </form>
         <!-- End Form -->
     </div>
+    <script>
+
+    </script>
 @endsection

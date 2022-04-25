@@ -46,11 +46,8 @@
                         <label class="label-title" for="password">Password</label>
                         <div class="search-bar">
                           <input type="password" id="password" name="password" placeholder="password" @error('password') style="border: 1px solid #ff0e0e" @enderror>
-                          <i class="far fa-eye"></i>
+                          <i class="far fa-eye" onclick="togglePass(event)"></i>
                         </div>
-                        {{-- @if($errors->has('password'))
-                            <small class="text-danger">{{$errors->first('password')}}</small>
-                        @endif --}}
                       </div>
                     </div>
                     <div class="row mb-3">
@@ -67,6 +64,20 @@
 
     {{-- include scripts --}}
     @include('employee.partials.scripts')
-
+    {{-- togglePass --}}
+    <script>
+        var state = false;
+        function togglePass(e){
+            if(state){
+                e.target.style.color='#7a797e'
+                e.target.previousElementSibling.setAttribute('type','password');
+                state = false;
+            }else{
+                e.target.style.color='#5887ef'
+                e.target.previousElementSibling.setAttribute('type','text');
+                state = true;
+            }
+        }
+    </script>
   </body>
 </html>

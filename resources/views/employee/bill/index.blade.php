@@ -25,10 +25,15 @@
                 <div class="mb-3 shadow bg-white rounded-3 p-3 mx-2">
                     <div class="row text-right">
                         <div class="col">
-                            <button class="text-secondary btn"
-                                onclick="deleteBill({{ $bill->id }},'{{ $bill->is_approved }}', event)">
-                                <i class="fa fa-window-close"></i>
-                            </button>
+                            <div class="wrapper">
+                                <div class="icon">
+                                    <div class="toolname">Delete</div>
+                                    <span><button class="text-secondary btn"
+                                        onclick="deleteBill({{ $bill->id }},'{{ $bill->is_approved }}', event)">
+                                        <i class="fa fa-window-close"></i>
+                                    </button></span>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div class="row">
