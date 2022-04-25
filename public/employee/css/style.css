@@ -450,6 +450,13 @@ body {
 
 .login-details {
     background: #d7d6dd;
+    height: 110%;
+    width: 100%;
+    top: -10px;
+    left: -1.5px;
+    /* margin-bottom: 100px; */
+    opacity: .5;
+    position: absolute;
     padding: 2.5rem;
     border-radius: 10px;
     box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.1);
@@ -459,7 +466,8 @@ body {
     font-size: 2rem;
     font-weight: 700;
     /* color: #383f50; */
-    color: #d7d6dd;
+    /* color: #d7d6dd; */
+    color: #ffff;
     margin-bottom: 20px;
     text-align: center;
     /* font-family: 'Lobster', cursive; */
@@ -469,7 +477,9 @@ body {
     padding-left: 10px;
     padding-bottom: 10px;
     color: #383f50;
-    font-size: 1rem;
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #ffff;
 }
 
 .login-btn {
@@ -675,3 +685,16 @@ body {
 
 
 /* end tooltip */
+
+
+/* login background */
+
+#bg-login {
+    /* min-height: 100vh; */
+    height: 100%;
+    width: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 70%;
+    position: absolute;
+}

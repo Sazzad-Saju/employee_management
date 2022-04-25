@@ -11,15 +11,17 @@
     <title>Login Page</title>
   </head>
   <body>
-    <video autoplay muted loop id="myVideo">
+    {{-- <video autoplay muted loop id="myVideo">
       <source src="{{asset('employee/img/video.mp4')}}" type="video/mp4">
-    </video>
+    </video> --}}
+    <img id="bg-login" src="{{asset('employee/img/wp2758037-wallpaper-gif.gif')}}" alt="">
     <div class="login">
         <div class="container-md">
             <div class="row align-items-center justify-content-center">
               <div class="col-lg-6 col-xl-4 col-md-8 col-sm-8 col-12">
                 <h1 class="login-title">Employee Login</h1>
                 <div class="login-details">
+                </div>
                   <form action="{{route('employee.login.store')}}" method="POST">
                     @csrf
                     <div class="row mb-3">
@@ -56,7 +58,7 @@
                       </div>
                     </div>
                   </form>
-                </div>
+
               </div>
             </div>
         </div>
