@@ -9,7 +9,8 @@
             <ul class="pt-1">
                 <li><a target="_blank" href="{{auth('employee')->user()->fb_url}}"><i class="fab fa-facebook-f"></i></a></li>
                 <li><a target="_blank" href="{{auth('employee')->user()->li_url}}"><i class="fab fa-linkedin"></i></a></li>
-                <li><a target="_blank" href="{{auth('employee')->user()->tt_url}}"><i class="fab fa-twitter"></i></a></li>
+                {{-- tt_url (twitter_url is changed to github_url) --}}
+                <li><a target="_blank" href="{{auth('employee')->user()->tt_url}}"><i style="color:blue" class="fab fa-github"></i></a></li>
             </ul>
         </div>
         <!-- All Links -->

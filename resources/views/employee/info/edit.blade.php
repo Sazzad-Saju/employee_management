@@ -85,8 +85,8 @@
         </div>
         <div class="col-xl-4 col-lg-6">
             <div class="search-bar mb-3">
-              <input type="text" placeholder="Twitter URL" name="tt_url" value="{{$employee->tt_url}}">
-              <i class="fab fa-twitter"></i>
+              <input type="text" placeholder="GitHub URL" name="tt_url" value="{{$employee->tt_url}}">
+              <i class="fab fa-github"></i>
               @error('tt_url')
                   <small class="text-danger">{{ $message }}</small>
               @enderror
